@@ -13,18 +13,17 @@ import './styles.styl';
 export class AppComponent {
   click$: Subject<any> = new Subject();
   uptime = Observable.interval(1000);
-  date = Observable.interval(1000)
-                    .map(() => new Date());
   update: Observable<Date>;
   constructor() {
     // rx 1 approach:
     Observable.fromEvent(this.onUptimeClick(), 'click');
     // rx 2 approach:
-    this.update = this.click$.map(() => new Date());
+    this.update = Observable.merge(
+      this.click$,
+      Observable.interval(2000)
+    ).map(() => new Date());
   }
 
   // ng2 approach
-  public onUptimeClick(): any {
-
-  }
+  public onUptimeClick(): any {}
 }
