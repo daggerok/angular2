@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 // import 'rxjs/add/operator/scan';
 
 import './styles.styl';
+import { appReducer } from '../../reducers/app/index';
 
 @Component({
   selector: 'app',
@@ -22,14 +23,6 @@ export class AppComponent {
         this.click$.mapTo('manual'),
         this.uptime.mapTo('seconds'))
                 .startWith(new Date())
-                .scan((acc: Date, curr: string) => {
-                  const target = new Date(acc.getTime());
-
-                  if (curr === 'manual')
-                    target.setHours(target.getHours() + 1);
-                  else
-                    target.setSeconds(target.getSeconds() + 1);
-                  return target;
-                });
+                .scan(appReducer);
   }
 }
