@@ -11,4 +11,5 @@ export default [
   '@angular/http',
   '@angular/router',
   'rxjs',
+  'rxjs/Rx',
 ];
