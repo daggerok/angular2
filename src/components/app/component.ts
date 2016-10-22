@@ -3,6 +3,8 @@ import { Observable, Subject } from 'rxjs';
 // // accesible from vendors
 // import 'rxjs/add/observable/interval';
 // import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/startWith';
+// import 'rxjs/add/operator/scan';
 
 import './styles.styl';
 
@@ -11,19 +13,18 @@ import './styles.styl';
   template: require('./template.html'),
 })
 export class AppComponent {
-  click$: Subject<any> = new Subject();
   uptime = Observable.interval(1000);
+
+  click$: Subject<any> = new Subject();
   update: Observable<Date>;
   constructor() {
-    // rx 1 approach:
-    Observable.fromEvent(this.onUptimeClick(), 'click');
-    // rx 2 approach:
-    this.update = Observable.merge(
-      this.click$,
-      Observable.interval(2000)
-    ).map(() => new Date());
+    this.update =
+      Observable.merge(this.click$, Observable.interval(2000))
+                .startWith(new Date())
+                .scan((date, acc) => {
+                  const target = new Date(date.getTime());
+                  target.setSeconds(date.getSeconds() + 1);
+                  return target;
+                });
   }
-
-  // ng2 approach
-  public onUptimeClick(): any {}
 }

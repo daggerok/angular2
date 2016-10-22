@@ -1,8 +1,12 @@
-<h4 class="btn btn-primary">
-  we are up and running at least {{ uptime | async }} seconds!
-</h4>
+<div class="container-fluid">
 
-<button (click)="click$.next()"
-    class="btn">
-  current datetime is: {{ update | async | date:'yyyy-MM-dd hh:mm:ss' }}
-</button>
+  <h4 class="btn btn-primary">
+    we are up and running at least {{ uptime | async }} seconds!
+  </h4>
+
+  <button (click)="click$.next()"
+          class="btn">
+    current datetime is: {{ update | async | date:'yyyy-MM-dd hh:mm:ss' }}
+  </button>
+
+</div>
