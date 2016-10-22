@@ -13,17 +13,22 @@ import './styles.styl';
   template: require('./template.html'),
 })
 export class AppComponent {
-  uptime = Observable.interval(1000);
-
-  click$: Subject<any> = new Subject();
-  update: Observable<Date>;
+  uptime: Observable<number> = Observable.interval(1000);
+  click$: any = new Subject();
+  update : Observable<Date>;
   constructor() {
     this.update =
-      Observable.merge(this.click$, Observable.interval(2000))
+      Observable.merge(
+        this.click$.mapTo('manual'),
+        this.uptime.mapTo('seconds'))
                 .startWith(new Date())
-                .scan((date, acc) => {
-                  const target = new Date(date.getTime());
-                  target.setSeconds(date.getSeconds() + 1);
+                .scan((acc: Date, curr: string) => {
+                  const target = new Date(acc.getTime());
+
+                  if (curr === 'manual')
+                    target.setHours(target.getHours() + 1);
+                  else
+                    target.setSeconds(target.getSeconds() + 1);
                   return target;
                 });
   }
