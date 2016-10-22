@@ -1,0 +1,15 @@
+{
+  "out": "doc",
+  "target": "ES5",
+  "mode": "modules",
+  "theme": "default",
+  "module": "commonjs",
+  "stripInternal": "true",
+  "moduleResolution": "node",
+  "preserveConstEnums": "true",
+  "ignoreCompilerErrors": "true",
+  "emitDecoratorMetadata": "true",
+  "experimentalDecorators": "true",
+  "suppressExcessPropertyErrors": "true",
+  "suppressImplicitAnyIndexErrors": "true"
+}
