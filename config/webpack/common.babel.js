@@ -1,11 +1,10 @@
 import path from 'path';
-import webpack from 'webpack';
 import ExtractPlugin from 'extract-text-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import vendors from './vendor.babel';
-import {ForkCheckerPlugin} from 'awesome-typescript-loader';
+import { ForkCheckerPlugin } from 'awesome-typescript-loader';
 
 const exclude = /\/node_modules\//;
 const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/;
@@ -75,13 +74,6 @@ export default {
         loader: 'html',
         test: /\.html$/,
       },
-      /*
-      {
-        include,
-        test: /template.html$/,
-        loader: 'ng-cache?prefix=[dir]/[dir]',
-      },
-      */
       {
         test: /\.css$/,
         include: [
@@ -140,7 +132,7 @@ export default {
     cssnano
   ],
 
-  node:{
+  node: {
     console: true,
     fs: 'empty',
     net: 'empty',

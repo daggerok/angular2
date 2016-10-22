@@ -1,11 +1,5 @@
 {
   "scripts": {
-    "typings-disabled-becouse-of-@types/*:core-js": "typings install dt~core-js --save --global",
-    "typings-disabled-becouse-of-@types/*:node": "typings install dt~node --save --global",
-    "typings-disabled-becouse-of-@types/*:jquery": "typings install dt~jquery --save --global",
-    "typings-disabled-becouse-of-@types/*:jasmine": "typings install dt~jasmine --save --global",
-    "typings:no-typings": "echo 'no typings for install..'",
-    "postinstall": "npm-run-all typings:*",
     "test": "echo 'running unit test... (TODO: not implemented)'",
     "e2e": "echo 'running e2e tests... (TODO: not implemented)'",
     "json-server": "babel-node ./node_modules/.bin/json-server --watch -c ./config/json-server/config.json ./config/json-server/testdata.babel.js",
@@ -28,13 +22,11 @@
   },
   "dependencies": {
     "@angular/common": "^2.1.0",
-    "@angular/compiler": "^2.1.0",
     "@angular/core": "^2.1.0",
     "@angular/forms": "^2.1.0",
     "@angular/http": "^2.1.0",
     "@angular/platform-browser": "^2.1.0",
     "@angular/platform-browser-dynamic": "^2.1.0",
-    "@angular/platform-server": "^2.1.0",
     "@angular/router": "^3.1.1",
     "@types/core-js": "^0.9.34",
     "bootstrap": "^3.3.7",
@@ -45,6 +37,8 @@
     "zone.js": "^0.6.17"
   },
   "devDependencies": {
+    "@angular/platform-server": "^2.1.0",
+    "@angular/compiler": "^2.1.0",
     "@angular/compiler-cli": "^2.1.1",
     "@angularclass/conventions-loader": "^1.0.2",
     "@angularclass/hmr": "^1.2.0",
@@ -53,7 +47,7 @@
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.38",
     "@types/protractor": "^1.5.20",
-    "@types/selenium-webdriver": "^2.53.33",
+    "@types/selenium-webdriver": "2.44.28",
     "@types/source-map": "^0.1.27",
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^1.12.34",
@@ -139,7 +133,7 @@
   },
   "keywords": [],
   "private": true,
-  "author": "daggerok",
+  "author": "Maksim Kostromin <daggerok@gmail.com>",
   "license": "ISC",
   "repository": {
     "type": "git",

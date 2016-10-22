@@ -6,6 +6,5 @@ config.output.sourceMapFilename = 'maps/[file].map';
 export default {
   ...config,
   devServer,
-  //devtool: '#source-map',
   devtool: 'cheap-module-eval-source-map',
 };
