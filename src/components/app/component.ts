@@ -28,6 +28,6 @@ export class AppComponent {
             .mapTo(MANUAL),
         this.uptime
             .mapTo(SECOND))
-              .subscribe((type: string) => store.dispatch({ type }));
+              .subscribe((type: string) => store.dispatch({ type, payload: 1 }));
   }
 }
