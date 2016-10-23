@@ -1,0 +1,15 @@
+<h4>bindings</h4>
+
+<div>{{ message }}</div>
+
+<br/>
+<span>dom attr binding</span>
+<input type="text" value="{{ message }}"/>
+
+<br/>
+<span [ngClass]="{'red-border': true}">property ng binding</span>
+<input type="text" #payload [value]="message"/>
+
+<br/>
+<span>event binding</span>
+<button class="btn btn-danger" (click)="emit(payload.value)">bind!</button>
