@@ -1,23 +1,22 @@
-import path from 'path';
-import ExtractPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import vendors from './vendor.babel';
-import { ForkCheckerPlugin } from 'awesome-typescript-loader';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const exclude = /\/node_modules\//;
-const extractCSS = new ExtractPlugin('[name].css', { allChunks: true });
 const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/;
 const resolve = (rel) => path.resolve(process.cwd(), rel);
+const extractCSS = new ExtractPlugin('[name].css');
 const resources = resolve('./src/assets');
 const include = resolve('./src');
 
-export default {
+module.exports = {
   entry: {
     vendor: [
       './src/polyfills.ts',
-      ...vendors
+      './src/vendors.ts',
     ],
     app: './src/main.ts',
   },
@@ -78,13 +77,6 @@ export default {
         loader: 'raw',
         test: /\.html$/,
       },
-      /*
-      {
-        include,
-        test: /template.html$/,
-        loader: 'ng-cache?prefix=[dir]/[dir]',
-      },
-      */
       {
         test: /\.css$/,
         include: [
@@ -128,10 +120,9 @@ export default {
   },
 
   plugins: [
-    extractCSS,
+    //extractCSS,
     new ForkCheckerPlugin(),
     new HtmlWebpackPlugin({
-      // filename: 'index.html',
       favicon: './src/assets/favicon.ico',
       template: './src/assets/index.html',
       minify: { collapseWhitespace: true }

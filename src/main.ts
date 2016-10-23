@@ -1,10 +1,19 @@
+/**
+ * @license
+ * Copyright daggerok. All rights reserved.
+ *
+ * Use of this source code is governed by a ISC-style license
+ * that can be found in the LICENSE file. at https://github.com/daggerok/angular2/LICENSE
+ */
+// import './polyfills.ts';
+
 // The browser platform with a compiler
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
 
-import { AppModule } from './components/module';
+import { AppModule } from './app/module';
 
-if (process.env.ENV === 'production') {
+if ('production' === process.env.ENV) {
   enableProdMode();
 }
 
@@ -17,6 +26,6 @@ platformBrowserDynamic()
  */
 // // The browser platform without a compiler
 // import { platformBrowser } from '@angular/platform-browser';
-// import { AppModuleFactory } from './components/factory';
+// import { AppModuleFactory } from './app/factory';
 // // Launch with the app module factory.
 // platformBrowser().bootstrapModuleFactory(AppModuleFactory);
