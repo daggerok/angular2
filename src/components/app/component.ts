@@ -15,20 +15,23 @@ import { HOUR, SECOND, name } from '../../reducers/app';
   template: require('./template.html'),
 })
 export class AppComponent {
-  uptime: Observable<number> = Observable.interval(1000);
-  update : Observable<Date>;
+  uptime: Observable<number> = Observable
+    .interval(1000);
 
-  click$: any = new Subject();
+  click$: any = new Subject()
+    .mapTo({ type: HOUR, payload: 1 });
+
+  seconds$: Observable<any> = Observable
+    .interval(1000)
+    .mapTo({ type: SECOND, payload: 5 });
+
+  update: Observable<Date>;
 
   constructor(store: Store<any>) {
     this.update = store.select(name);
 
-    Observable.merge(
-        this.click$
-            .mapTo({type: HOUR, payload: 1}),
-        this.uptime
-            .mapTo({ type: SECOND, payload: 5 }))
-              // core.umd.js:3076 TypeError: Cannot read property 'next' of undefined
+    Observable.merge(this.click$, this.seconds$)
+              // // core.umd.js:3076 TypeError: Cannot read property 'next' of undefined
               // .subscribe(store.dispatch);
               // .subscribe(store.dispatch.bind(this));
               .subscribe(store.dispatch.bind(store));
