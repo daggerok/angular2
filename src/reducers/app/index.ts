@@ -6,10 +6,13 @@ export const SECOND = 'second';
 const handle = (state: Date, type: string) => {
   const target = new Date(state.getTime());
 
-  if (type === MANUAL)
-    target.setHours(target.getHours() + 1);
-  else
-    target.setSeconds(target.getSeconds() + 1);
+  switch (type) {
+    case MANUAL:
+      target.setHours(target.getHours() + 1);
+    case SECOND:
+      target.setSeconds(target.getSeconds() + 1);
+  }
+
   return target;
 };
 
