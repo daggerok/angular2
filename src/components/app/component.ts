@@ -28,6 +28,9 @@ export class AppComponent {
             .mapTo({type: HOUR, payload: 1}),
         this.uptime
             .mapTo({ type: SECOND, payload: 5 }))
-              .subscribe((action: Action) => store.dispatch(action));
+              // core.umd.js:3076 TypeError: Cannot read property 'next' of undefined
+              // .subscribe(store.dispatch);
+              // .subscribe(store.dispatch.bind(this));
+              .subscribe(store.dispatch.bind(store));
   }
 }
