@@ -3,15 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 
 import { AppComponent }  from './app/component';
-import { clock } from '../reducers/app';
+import { clock, people } from '../reducers';
 import { AppClockComponent } from './app-clock/component';
+import { AppPeopleComponent } from './app-people/component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    StoreModule.provideStore({ clock })
+    StoreModule.provideStore({ clock, people })
   ],
-  declarations: [ AppComponent, AppClockComponent ],
+  declarations: [
+    AppComponent,
+    AppClockComponent,
+    AppPeopleComponent,
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

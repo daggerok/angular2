@@ -7,6 +7,9 @@
     we are up and running at least {{ uptime | async }} seconds!
   </button>
 
-  <app-clock [format]="dateFormatter" [time]="time | async"></app-clock>
+  <app-clock [format]="dateFormatter"
+             [time]="time | async"></app-clock>
+
+  <app-people [people]="people | async"></app-people>
 
 </div>

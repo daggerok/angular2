@@ -8,7 +8,8 @@ import { Observable, Subject } from 'rxjs';
 
 import './styles.styl';
 import { Store, Action } from '@ngrx/store';
-import { HOUR, SECOND, name } from '../../reducers/app';
+import { HOUR, SECOND, CLOCK, PEOPLE } from '../../reducers';
+import { Person } from '../../domain/People';
 
 @Component({
   selector: 'app',
@@ -27,15 +28,15 @@ export class AppComponent {
 
   time: Observable<Date>;
 
+  people: Observable<Array<Person>>;
+
   dateFormatter: string = 'yyyy-MM-dd hh:mm:ss';
 
   constructor(store: Store<any>) {
-    this.time = store.select(name);
+    this.time = store.select(CLOCK);
+    this.people = store.select(PEOPLE);
 
     Observable.merge(this.click$, this.seconds$)
-              // // core.umd.js:3076 TypeError: Cannot read property 'next' of undefined
-              // .subscribe(store.dispatch);
-              // .subscribe(store.dispatch.bind(this));
               .subscribe(store.dispatch.bind(store));
   }
 }
