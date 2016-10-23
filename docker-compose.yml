@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  angular2nginx:
+    container_name: angular2nginx
+    image: nginx:latest
+    volumes:
+      - ./dist:/usr/share/nginx/html
+    ports:
+      - "80:80"

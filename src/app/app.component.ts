@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app',
-  template: `<h2>hi, {{ name }}!</h2>`
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
-  name = 'badass';
+  constructor() {}
 }

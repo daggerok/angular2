@@ -1,9 +1,10 @@
 sudo: required
 dist: trusty
 language: node_js
-node_js: 6
-install:
-  - true
+node_js:
+  - 6
+  - 7
+install: true
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
@@ -14,7 +15,8 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 script:
   - npm i
-  - npm run webpack
+  - npm run e2e
+  - npm run lint
   - npm run build
-  - cat *.log | true
+  - cat *.log* | true
 cache.directories: node_modules/

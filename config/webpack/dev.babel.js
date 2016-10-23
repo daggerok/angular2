@@ -1,11 +1,7 @@
-import config from './common.babel';
-import devServer from './devServer.babel';
-
-config.output.sourceMapFilename = 'maps/[file].map';
+import config from './common/config.babel';
+import devServer from './common/webpack-dev-server.babel';
 
 export default {
   ...config,
   devServer,
-  //devtool: '#source-map',
-  devtool: 'cheap-module-eval-source-map',
 };
