@@ -146,7 +146,7 @@ export default {
     tls: 'empty',
     global: true,
     crypto: 'empty',
-    //process: false,
+    process: true,
     module: false,
     clearImmediate: false,
     setImmediate: false,

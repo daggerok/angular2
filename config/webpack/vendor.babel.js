@@ -9,6 +9,7 @@ export default [
   '@angular/platform-browser-dynamic',
   '@angular/core',
   '@angular/common',
+  '@angular/compiler',
   '@angular/http',
   '@angular/router',
   //'@angular/forms',
@@ -16,4 +17,5 @@ export default [
   //'@angular/platform-server',
   // reactive js
   'rxjs',
+  'rxjs/Rx',
 ];
