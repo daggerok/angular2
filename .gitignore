@@ -1,8 +1,12 @@
-npm-debug.log*
+_test-output/
 node_modules/
-.DS_Store
-src/*.js*
 coverage/
 typings/
 .idea/
 dist/
+.DS_Store
+npm-debug.log*
+e2e/*.js.map
+e2e/*.js
+src/*.js.map
+src/*.js
