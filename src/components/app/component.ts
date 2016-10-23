@@ -19,16 +19,18 @@ export class AppComponent {
     .interval(1000);
 
   click$: any = new Subject()
-    .map((payloadValue) => ({ type: HOUR, payload: (+payloadValue) }));
+    .map((payloadValue) => ({ type: HOUR, payload: parseInt(payloadValue) }));
 
   seconds$= Observable
     .interval(1000)
     .mapTo({ type: SECOND, payload: 5 });
 
-  update: Observable<Date>;
+  time: Observable<Date>;
+
+  dateFormatter: string = 'yyyy-MM-dd hh:mm:ss';
 
   constructor(store: Store<any>) {
-    this.update = store.select(name);
+    this.time = store.select(name);
 
     Observable.merge(this.click$, this.seconds$)
               // // core.umd.js:3076 TypeError: Cannot read property 'next' of undefined
