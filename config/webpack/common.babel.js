@@ -9,7 +9,7 @@ import { ForkCheckerPlugin } from 'awesome-typescript-loader';
 const exclude = /\/node_modules\//;
 const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/;
 const resolve = (rel) => path.resolve(process.cwd(), rel);
-const resources = resolve('./src/assets');
+const resources = resolve('./src/resources');
 const include = resolve('./src');
 
 export default {
@@ -102,7 +102,7 @@ export default {
       },
       {
         include: resources,
-        loader: 'file?name=resources/[1]&regExp=src/assets/(.*)',
+        loader: 'file?name=resources/[1]&regExp=src/resources/(.*)',
         test: assets,
       },
       {
@@ -128,8 +128,8 @@ export default {
     new ExtractPlugin('[name].css', { allChunks: true }),
     new HtmlWebpackPlugin({
       // filename: 'index.html',
-      favicon: './src/assets/favicon.ico',
-      template: './src/assets/index.html',
+      favicon: './src/favicon.ico',
+      template: './src/resources/index.html',
       minify: { collapseWhitespace: true }
     }),
   ],
