@@ -12,10 +12,11 @@ export default [
   '@angular/compiler',
   '@angular/http',
   '@angular/router',
-  //'@angular/forms',
-  //'@angular/compiler',
-  //'@angular/platform-server',
+  '@angular/forms',
+  '@angular/platform-server',
   // reactive js
   'rxjs',
   'rxjs/Rx',
+  // bootstrap
+  'bootstrap/dist/css/bootstrap.css',
 ];

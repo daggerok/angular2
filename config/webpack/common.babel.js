@@ -11,6 +11,7 @@ const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/;
 const resolve = (rel) => path.resolve(process.cwd(), rel);
 const resources = resolve('./src/assets');
 const include = resolve('./src');
+const tests = /\.(spec|e2e)\.ts$/;
 
 export default {
   entry: {
@@ -36,8 +37,10 @@ export default {
     loaders: [
       {
         test: /\.ts$/,
-        //loaders: 'ts',
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader'
+        ],
       },
       {
         include,
@@ -74,13 +77,6 @@ export default {
         loader: 'html',
         test: /\.html$/,
       },
-      /*
-      {
-        include,
-        test: /template.html$/,
-        loader: 'ng-cache?prefix=[dir]/[dir]',
-      },
-      */
       {
         test: /\.css$/,
         include: [
@@ -127,7 +123,6 @@ export default {
     new ForkCheckerPlugin(),
     new ExtractPlugin('[name].css', { allChunks: true }),
     new HtmlWebpackPlugin({
-      // filename: 'index.html',
       favicon: './src/assets/favicon.ico',
       template: './src/assets/index.html',
       minify: { collapseWhitespace: true }
