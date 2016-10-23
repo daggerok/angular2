@@ -2,8 +2,10 @@
 
 ```bash
 npm i
-npm start
+npm run webpack
 npm run dev
+npm start
+npm run e2e
 npm run build
 npm run serve
 ```
