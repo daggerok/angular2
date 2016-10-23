@@ -7,8 +7,8 @@ import { Observable, Subject } from 'rxjs';
 // import 'rxjs/add/operator/scan';
 
 import './styles.styl';
-import { Store } from '@ngrx/store';
-import { MANUAL, SECOND } from '../../reducers/app/index';
+import { Store, Action } from '@ngrx/store';
+import { HOUR, SECOND, name } from '../../reducers/app';
 
 @Component({
   selector: 'app',
@@ -21,13 +21,13 @@ export class AppComponent {
   click$: any = new Subject();
 
   constructor(store: Store<any>) {
-    this.update = store.select('clock');
+    this.update = store.select(name);
 
     Observable.merge(
         this.click$
-            .mapTo(MANUAL),
+            .mapTo({type: HOUR, payload: 1}),
         this.uptime
-            .mapTo(SECOND))
-              .subscribe((type: string) => store.dispatch({ type, payload: 1 }));
+            .mapTo({ type: SECOND, payload: 5 }))
+              .subscribe((action: Action) => store.dispatch(action));
   }
 }
