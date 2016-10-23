@@ -71,7 +71,7 @@ export default {
       },
       {
         include,
-        loader: 'html',
+        loader: 'raw',
         test: /\.html$/,
       },
       {

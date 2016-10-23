@@ -99,6 +99,7 @@
     "parse5": "^2.2.2",
     "postcss-loader": "^1.0.0",
     "protractor": "^4.0.9",
+    "raw-loader": "^0.5.1",
     "reflect-metadata": "^0.1.8",
     "resolve-url-loader": "^1.6.0",
     "rimraf": "^2.5.4",
