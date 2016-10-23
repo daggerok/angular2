@@ -1,9 +1,15 @@
-export const appReducer = (acc: Date, curr: string) => {
-  const target = new Date(acc.getTime());
+import { Action } from '@ngrx/store';
 
-  if (curr === 'manual')
+const handle = (state: Date, type: string) => {
+  const target = new Date(state.getTime());
+
+  if (type === 'manual')
     target.setHours(target.getHours() + 1);
   else
     target.setSeconds(target.getSeconds() + 1);
   return target;
+};
+
+export const clock = (state = new Date, action: Action) => {
+  return handle(state, action.type);
 };

@@ -6,5 +6,6 @@ import '@angular/http';
 import '@angular/router';
 import 'rxjs';
 import 'rxjs/Rx';
+import '@ngrx/store';
 
 import 'bootstrap/dist/css/bootstrap.css';

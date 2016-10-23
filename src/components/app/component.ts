@@ -7,7 +7,7 @@ import { Observable, Subject } from 'rxjs';
 // import 'rxjs/add/operator/scan';
 
 import './styles.styl';
-import { appReducer } from '../../reducers/app/index';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app',
@@ -15,14 +15,18 @@ import { appReducer } from '../../reducers/app/index';
 })
 export class AppComponent {
   uptime: Observable<number> = Observable.interval(1000);
-  click$: any = new Subject();
   update : Observable<Date>;
-  constructor() {
-    this.update =
-      Observable.merge(
-        this.click$.mapTo('manual'),
-        this.uptime.mapTo('seconds'))
-                .startWith(new Date())
-                .scan(appReducer);
+
+  click$: any = new Subject();
+
+  constructor(store: Store<any>) {
+    this.update = store.select('clock');
+
+    Observable.merge(
+        this.click$
+            .mapTo('manual'),
+        this.uptime
+            .mapTo('seconds'))
+              .subscribe((type: string) => store.dispatch({ type }));
   }
 }

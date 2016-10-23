@@ -12,4 +12,5 @@ export default [
   '@angular/router',
   'rxjs',
   'rxjs/Rx',
+  '@ngrx/store',
 ];

@@ -8,4 +8,8 @@ if (process.env.ENV === 'production') {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule);
+  .bootstrapModule(AppModule, )
+  .then(
+    () => console.info('app started'),
+    console.error
+  );
