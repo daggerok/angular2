@@ -10,6 +10,10 @@
   <app-clock [format]="dateFormatter"
              [time]="time | async"></app-clock>
 
-  <app-people [people]="people | async"></app-people>
+  <app-people [format]="'jms'"
+              [people]="people | async"></app-people>
+
+  <button (click)="recall$.next()"
+          class="btn btn-dander">recall</button>
 
 </div>

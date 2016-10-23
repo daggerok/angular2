@@ -5,13 +5,12 @@ import { Person } from '../../domain/People';
   selector: 'app-people',
   template: `
     <div class="panel" *ngFor="let person of people">
-      <div class="panel-body">
-        name: {{ person.name }}
-        in {{ person.time }}
-      </div>
+      name: {{ person.name }}
+      in {{ person.time | date:format }}
     </div>
   `
 })
 export class AppPeopleComponent {
   @Input() people: Array<Person> = null;
+  @Input() format: string = null;
 }

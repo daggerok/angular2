@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 
 import './styles.styl';
 import { Store, Action } from '@ngrx/store';
-import { HOUR, SECOND, CLOCK, PEOPLE } from '../../reducers';
+import { HOUR, SECOND, CLOCK, PEOPLE, RECALL } from '../../reducers';
 import { Person } from '../../domain/People';
 
 @Component({
@@ -20,7 +20,9 @@ export class AppComponent {
     .interval(1000);
 
   click$: any = new Subject()
-    .map((payloadValue) => ({ type: HOUR, payload: parseInt(payloadValue) }));
+    .map(payloadValue => ({ type: HOUR, payload: parseInt(payloadValue) }));
+
+  recall$: any = new Subject();
 
   seconds$= Observable
     .interval(1000)
@@ -36,7 +38,12 @@ export class AppComponent {
     this.time = store.select(CLOCK);
     this.people = store.select(PEOPLE);
 
-    Observable.merge(this.click$, this.seconds$)
-              .subscribe(store.dispatch.bind(store));
+    Observable.merge(
+      this.click$,
+      this.seconds$,
+      this.recall$
+          .withLatestFrom(this.time, (_: any, t: Date) => t)
+          .map((time: any) => ({ type: RECALL, payload: time}))
+    ).subscribe(store.dispatch.bind(store));
   }
 }

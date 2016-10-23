@@ -2,38 +2,41 @@ import { Action } from '@ngrx/store';
 import { Person, create } from '../domain/People';
 
 export const CLOCK = 'clock';
-export const HOUR = 'hour';
-export const SECOND = 'second';
 
-const handle = (state: Date, type: string, payload: number) => {
+export const HOUR = 'HOUR';
+export const SECOND = 'SECOND';
+export const RECALL = 'RECALL';
+
+const handle = (state: Date, action: Action) => {
 
   const target = new Date(state.getTime());
 
-  switch (type) {
+  switch (action.type) {
     case HOUR:
-      target.setHours(target.getHours() + payload);
+      target.setHours(target.getHours() + action.payload);
     case SECOND:
-      target.setSeconds(target.getSeconds() + payload);
+      target.setSeconds(target.getSeconds() + action.payload);
   }
 
   return target;
 };
 
-export const clock = (state = new Date, action: Action) =>
-  handle(state, action.type, action.payload);
+export const clock = (state = new Date, action: Action = { type: null, payload: null }) =>
+  handle(state, action);
 
 export const PEOPLE = 'people';
 
 const defaultPeople: Array<Person> = [
-  create('Max', ''),
-  create('Bax', ''),
-  create('Fax', ''),
+  create('Max', clock()),
+  create('Bax', clock()),
+  create('Fax', clock()),
 ];
 
 export const people = (state = defaultPeople, action: Action) => {
-  /*switch (action.type) {
+  switch (action.type) {
+    case RECALL:
+      return state.map(person => Object.assign({}, person, { time: action.payload }));
     default:
-      state;
-  }*/
-  return state;
+      return state;
+  }
 };
