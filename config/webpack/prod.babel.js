@@ -1,34 +1,34 @@
 import webpack from 'webpack';
 import config from './common.babel';
 
-const vendor = 'vendor';
+const vendors = 'vendors';
 
 //config.devtool = false;
 config.devtool = '#source-map';
+config.output.sourceMapFilename = 'maps/[file].map';
 
 config.plugins = [
   ...config.plugins,
   new webpack.optimize.CommonsChunkPlugin(
     // chunkName=
-    vendor,
+    vendors,
     // filename=
-    `vendor/${vendor}.js`
+    `${vendors}.js`
   ),
   new webpack.NoErrorsPlugin(),
   new webpack.optimize.DedupePlugin(),
-  //new webpack.optimize.UglifyJsPlugin(),
-  // https://github.com/angular/angular/issues/10618
   new webpack.optimize.UglifyJsPlugin({
     mangle: {
+      // https://github.com/angular/angular/issues/10618
       keep_fnames: true
     }
   }),
   new webpack.DefinePlugin({
     /*
-     'process.env': {
-     'NODE_ENV': JSON.stringify(ENV)
-     }
-     */
+    'process.env': {
+      'NODE_ENV': JSON.stringify(ENV)
+    }
+    */
     'process.env': {
       'ENV': JSON.stringify('production')
     }

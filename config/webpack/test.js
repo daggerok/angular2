@@ -1,24 +1,22 @@
-import path from 'path';
-import webpack from 'webpack';
-import ExtractPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
-import vendors from './vendors.babel';
-import { ForkCheckerPlugin } from 'awesome-typescript-loader';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractPlugin = require('extract-text-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const exclude = /\/node_modules\//;
-const extractCSS = new ExtractPlugin('[name].css', { allChunks: true });
 const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/;
 const resolve = (rel) => path.resolve(process.cwd(), rel);
+const extractCSS = new ExtractPlugin('[name].css');
 const resources = resolve('./src/assets');
 const include = resolve('./src');
 
-export default {
+module.exports = {
   entry: {
     vendors: [
       './src/polyfills.ts',
-      ...vendors
+      './src/vendors.ts',
     ],
     app: './src/main.ts',
   },
@@ -27,6 +25,8 @@ export default {
     path: './dist',
     filename: '[name].js',
   },
+
+  devtool: 'cheap-module-eval-source-map',
 
   module: {
     preLoaders: [{
@@ -79,13 +79,6 @@ export default {
         loader: 'raw',
         test: /\.html$/,
       },
-      /*
-      {
-        include,
-        test: /template.html$/,
-        loader: 'ng-cache?prefix=[dir]/[dir]',
-      },
-      */
       {
         test: /\.css$/,
         include: [
@@ -93,12 +86,15 @@ export default {
           resolve('./node_modules/bootstrap/dist'),
           include,
         ],
-        loader: extractCSS.extract('style', 'css?importloader=1&sourceMap', 'postcss'),
+        loader: extractCSS.extract('style', 'css?importloader=1', 'postcss'),
       },
       {
         include,
         test: /\.styl$/,
-        loader: extractCSS.extract('style', 'css!postcss!stylus?sourceMap'),
+        loader: extractCSS.extract({
+          notExtractLoader: 'style-loader',
+          loader: 'css!postcss!stylus?sourceMap'
+        }),
       },
       {
         include: exclude,
@@ -129,18 +125,13 @@ export default {
   },
 
   plugins: [
-    extractCSS,
+    //// workaround for karma:
+    // extractCSS,
     new ForkCheckerPlugin(),
     new HtmlWebpackPlugin({
-      // filename: 'index.html',
-      favicon: './src/assets/favicon.ico',
       template: './src/assets/index.html',
+      favicon: './src/assets/favicon.ico',
       minify: { collapseWhitespace: true }
-    }),
-    new webpack.ProvidePlugin({
-      jQuery: 'jquery',
-      $: 'jquery',
-      jquery: 'jquery'
     }),
   ],
 

@@ -1,8 +1,36 @@
+/_test-output/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+/.vscode
+.project
+.classpath
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
 npm-debug.log*
-node_modules/
+*.log
+/typings
+
+# compile putput
+/e2e/*.js
+/e2e/*.map
+/src/*.js
+/src/*.map
+
+#System Files
 .DS_Store
-src/*.js*
-coverage/
-typings/
-.idea/
-dist/
+Thumbs.db
