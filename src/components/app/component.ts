@@ -8,6 +8,7 @@ import { Observable, Subject } from 'rxjs';
 
 import './styles.styl';
 import { Store } from '@ngrx/store';
+import { MANUAL, SECOND } from '../../reducers/app/index';
 
 @Component({
   selector: 'app',
@@ -24,9 +25,9 @@ export class AppComponent {
 
     Observable.merge(
         this.click$
-            .mapTo('manual'),
+            .mapTo(MANUAL),
         this.uptime
-            .mapTo('seconds'))
+            .mapTo(SECOND))
               .subscribe((type: string) => store.dispatch({ type }));
   }
 }
