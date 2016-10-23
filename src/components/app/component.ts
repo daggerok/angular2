@@ -15,13 +15,13 @@ import { HOUR, SECOND, name } from '../../reducers/app';
   template: require('./template.html'),
 })
 export class AppComponent {
-  uptime: Observable<number> = Observable
+  uptime = Observable
     .interval(1000);
 
   click$: any = new Subject()
-    .mapTo({ type: HOUR, payload: 1 });
+    .map((payloadValue) => ({ type: HOUR, payload: (+payloadValue) }));
 
-  seconds$: Observable<any> = Observable
+  seconds$= Observable
     .interval(1000)
     .mapTo({ type: SECOND, payload: 5 });
 
