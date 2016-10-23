@@ -5,6 +5,7 @@ const vendor = 'vendor';
 
 //config.devtool = false;
 config.devtool = '#source-map';
+config.output.sourceMapFilename = 'maps/[file].map';
 
 config.plugins = [
   ...config.plugins,

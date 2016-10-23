@@ -36,8 +36,11 @@ export default {
     loaders: [
       {
         test: /\.ts$/,
-        //loaders: 'ts',
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        // loader: 'ts',
+        loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader'
+        ],
       },
       {
         include,
@@ -71,7 +74,7 @@ export default {
       },
       {
         include,
-        loader: 'html',
+        loader: 'raw',
         test: /\.html$/,
       },
       /*
@@ -146,7 +149,7 @@ export default {
     tls: 'empty',
     global: true,
     crypto: 'empty',
-    //process: false,
+    process: true,
     module: false,
     clearImmediate: false,
     setImmediate: false,
