@@ -4,13 +4,14 @@
   "license": "ISC",
   "angular-cli": {},
   "scripts": {
+    "postinstall": "npm-run-all typings:*",
+    "typings:jquery": "typings install dt~jquery --save --global",
     "build": "npm run compile -- --prod",
     "compile": "ng build",
     "start": "ng serve --port 3000",
     "dev": "ng test",
     "pree2e-manual": "webdriver-manager update",
     "e2e-manual": "protractor",
-
     "wait-20s": "sleep 20",
     "lint": "tslint 'src/**/*.ts'",
     "stop": "killall -9 angular-cli",
@@ -34,7 +35,10 @@
     "@angular/platform-browser": "~2.1.0",
     "@angular/platform-browser-dynamic": "~2.1.0",
     "@angular/router": "~3.1.0",
+    "@types/jquery": "^2.0.33",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "jquery": "^3.1.1",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
@@ -55,7 +59,8 @@
     "protractor": "4.0.9",
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
-    "typescript": "~2.0.3"
+    "typescript": "~2.0.3",
+    "typings": "^1.4.0"
   },
   "description": "This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.18.",
   "main": "src/main.ts",
