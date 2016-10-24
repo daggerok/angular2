@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app',
-  template: `<h2>hi, {{ name }}!</h2>`
+  template: '<h4>app</h4>'
 })
 export class AppComponent {
-  name = 'badass';
 }

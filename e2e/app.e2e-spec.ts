@@ -1,14 +1,16 @@
-import { Angular2Page } from './app.po';
+import { browser, element, by } from 'protractor';
 
-describe('app h2', function() {
-  let page: Angular2Page;
+describe('app E2E Tests', function () {
 
-  beforeEach(() => {
-    page = new Angular2Page();
+  let expectedMsg = 'app';
+
+
+  beforeEach(function () {
+    browser.get('');
   });
 
-  it('should display message saying "hi, badass!"', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('hi, badass!');
+  it('should display: ' + expectedMsg, function () {
+    expect(element(by.css('h4')).getText()).toEqual(expectedMsg);
   });
+
 });
