@@ -14,8 +14,8 @@ before_install:
 script:
   - npm i
   - npm run compile
-  #- npm test
+  - npm test
   - npm run build
-  - npm run travis-e2e
+  - npm run e2e
   - cat *.log | true
 cache.directories: node_modules/

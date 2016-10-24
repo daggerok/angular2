@@ -13,7 +13,7 @@ import { Recipe } from './recipe';
       </div>
     </div>
   `,
-  styles: []
+  styles: [``]
 })
 export class RecipesComponent implements OnInit {
   recipes: Recipe[];
