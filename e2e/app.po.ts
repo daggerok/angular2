@@ -6,6 +6,6 @@ export class RbPage {
   }
 
   getParagraphText() {
-    return element(by.css('rb-root div')).getText();
+    return element(by.css('a.navbar-brand div')).getText();
   }
 }
