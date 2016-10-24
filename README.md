@@ -3,13 +3,9 @@
 ```bash
 npm i
 npm start
-npm run dev
-npm run tdd
 npm run e2e
 npm run lint
-npm run webpack
-npm run build
-npm run serve
+npm run test-once
 ```
 
 # Angular QuickStart Source
