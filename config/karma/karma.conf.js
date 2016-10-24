@@ -9,7 +9,7 @@ module.exports = function(config) {
   var testSrcBase = 'testing/';       // test source TS files
 
   config.set({
-    basePath: '',
+    basePath: '../..',
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
