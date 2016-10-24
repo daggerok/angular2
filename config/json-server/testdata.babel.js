@@ -12,44 +12,44 @@ const seq = () => Array(rnd()).fill();
 
 const _links = [{self: 'http://localhost:8080/api'}];
 
-const categories = seq().map((_, id) => { return {
+const recipes = seq().map((_, id) => { return {
   id,
   name: faker.name.title(),
 }});
 
 let id = 1;
-const bookmarksWithCategories = categories.map(c => seq().map((_, i) => { return {
+const recipeDetails = recipes.map(c => seq().map((_, i) => { return {
   id: id++,
   name: faker.name.findName(),
   url: faker.internet.url(),
-  title: c.name,
+  description: c.name,
   _links
 }}));
 
-let bookmarks = [];
-bookmarksWithCategories.forEach(c => {
-  bookmarks = [
-    ...bookmarks,
+let details = [];
+recipeDetails.forEach(c => {
+  details = [
+    ...details,
     ...c
   ]
 });
 
 export default () => { return {
-  "api/categories": {
+  "api/recipes": {
     _embedded: {
-      categories,
+      recipes,
       _links
     }
   },
-  "api/bookmarks": {
+  "api/details": {
     _embedded: {
-      bookmarks,
+      details,
       _links
     }
   },
-  "api/some": {
+  "api/recipeDetails": {
     _embedded: {
-      some: bookmarksWithCategories,
+      some: recipeDetails,
       _links
     }
   }

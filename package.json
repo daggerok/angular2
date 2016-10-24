@@ -8,7 +8,9 @@
     "typings:jquery": "typings install dt~jquery --save --global",
     "build": "npm run compile -- --prod",
     "compile": "ng build",
-    "start": "ng serve --port 3000",
+    "json-server": "babel-node ./node_modules/.bin/json-server --watch -c ./config/json-server/config.json ./config/json-server/testdata.babel.js",
+    "ng-serve": "ng serve --port 3000 --proxy-config ./config/proxy/api.json",
+    "start": "npm-run-all -p json-server ng-serve",
     "dev": "ng test",
     "pree2e-manual": "webdriver-manager update",
     "e2e-manual": "protractor",
@@ -47,9 +49,17 @@
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.18",
+    "babel-cli": "^6.16.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-class-properties": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "babel-register": "^6.16.3",
     "codelyzer": "1.0.0-beta.1",
+    "faker": "^3.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
+    "json-server": "^0.8.22",
     "karma": "1.2.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-cli": "^1.0.1",
@@ -61,6 +71,16 @@
     "tslint": "3.13.0",
     "typescript": "~2.0.3",
     "typings": "^1.4.0"
+  },
+  "babel": {
+    "presets": [
+      "stage-0",
+      "es2015"
+    ],
+    "plugins": [
+      "add-module-exports",
+      "transform-class-properties"
+    ]
   },
   "description": "This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.18.",
   "main": "src/main.ts",
