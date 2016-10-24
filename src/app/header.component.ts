@@ -22,7 +22,7 @@ import { Component, OnInit } from '@angular/core';
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Recepies <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Recipes <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Shopping List</a></li>
           </ul>
           
@@ -47,9 +47,7 @@ import { Component, OnInit } from '@angular/core';
       </div>
     </nav>
   `,
-  styles: [`
-    body { padding-top: 70px; }
-  `]
+  styles: [``]
 })
 export class HeaderComponent implements OnInit {
 
