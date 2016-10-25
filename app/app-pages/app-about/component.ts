@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-content',
+  selector: 'app-about',
   templateUrl: './template.html'
 })
-export class AppContentComponent {}
+export class AppAboutComponent {}
