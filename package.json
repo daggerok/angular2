@@ -10,35 +10,46 @@
     "typings-disabled-becouse-of-@types/*:jasmine": "typings install dt~jasmine --save --global",
     "typings:no-typings": "echo 'no typings for install..'",
     "postinstall": "npm-run-all typings:*",
-    "json-server": "babel-node ./node_modules/.bin/json-server --watch -c ./config/json-server/config.json ./config/json-server/testdata.babel.js",
-    "webpack": "ENV=development webpack --config=./config/webpack/dev.babel.js -c --process",
-    "clean": "rimraf -rf ./dist ./typings*",
+
     "sleep": "sleep 3",
-    "dev": "npm-run-all -p watch json-server",
-    "watch": "npm run webpack -- -w",
+
+    "clean": "rimraf -rf ./dist ./typings*",
     "predev": "npm run clean",
-    "start": "npm-run-all -p webpack-dev-server json-server open-dev-url",
-    "webpack-dev-server": "ENV=development webpack-dev-server -w -d --config=./config/webpack/dev.babel.js --content-base=./src",
-    "open-dev-url": "npm-run-all sleep open-dev",
-    "open-dev": "open-url localhost:8000",
-    "serve": "npm-run-all build start-server-and-open-prod-url",
-    "build": "ENV=production webpack --config=./config/webpack/prod.babel.js -c --progress --profile --bail -p",
-    "start-server-and-open-prod-url": "npm-run-all -p open-prod-url json-server",
-    "open-prod-url": "npm-run-all sleep open-prod",
-    "open-prod": "open-url localhost:8080",
     "prebuild": "npm run clean",
-    "wait-20s": "sleep 20",
-    "killall": "killall -9 node",
+
+    "json-server": "babel-node ./node_modules/.bin/json-server --watch -c ./config/json-server/config.json ./config/json-server/testdata.babel.js",
+
+    "watch": "npm run webpack -- -w",
+    "webpack": "ENV=development webpack --config=./config/webpack/dev.babel.js -c --process",
+    "dev": "npm-run-all -p watch json-server",
+
+    "open-dev": "open-url localhost:8000",
+    "open-dev-url": "npm-run-all sleep open-dev",
+    "webpack-dev-server": "ENV=development webpack-dev-server -w -d --config=./config/webpack/dev.babel.js --content-base=./src",
+    "start": "npm-run-all -p webpack-dev-server json-server open-dev-url",
+
+    "open-prod": "open-url localhost:8080",
+    "open-prod-url": "npm-run-all sleep open-prod",
+    "start-server-and-open-prod-url": "npm-run-all -p open-prod-url json-server",
+    "build": "ENV=production webpack --config=./config/webpack/prod.babel.js -c --progress --profile --bail -p",
+    "serve": "npm-run-all build start-server-and-open-prod-url",
+
     "lint": "tslint 'src/**/*.ts'",
-    "webdriver": "webdriver-manager update",
-    "tdd": "karma start ./config/karma/watch.js",
-    "test": "karma start ./config/karma/singlerun.js",
+
+    "test": "karma start ./config/karma/config.js --single-run",
+    "tdd": "karma start ./config/karma/config.js",
+
+    "e2e": "npm-run-all -p prepare-e2e wait-20s-and-run-protractor",
+    "pree2e": "webdriver-manager update",
+    "prepare-e2e": "concurrently -p '[{name}]' -n 'HTTP' -c 'bgYellow.bold' 'npm run webpack-dev-server' --kill-others --success first",
+    "wait-20s-and-run-protractor": "concurrently -p '[{name}]' -n 'PROTRACTOR' -c 'bgGreen.bold' 'npm-run-all wait-20s protractor' --kill-others --success first",
+    "postwait-20s-and-run-protractor": "npm run stop",
+    "wait-20s": "sleep 20",
     "protractor": "protractor ./config/protractor/conf.js",
-    "e2e": "npm-run-all -p prepare-e2e wait-20s-and-run-e2e",
-    "travis-e2e": "npm-run-all -p prepare-e2e wait-20s-and-run-e2e",
-    "prepare-e2e": "(npm-run-all -p webpack-dev-server webdriver) &",
-    "wait-20s-and-run-e2e": "exit 0 | npm-run-all wait-20s protractor stop",
-    "stop": "kill -9 $(ps waux | grep webpack-dev-server | grep webdriver | grep -v color | awk '{print $2}')"
+    "stop": "kill -9 $(ps waux | grep webpack-dev-server | grep -v color | awk '{print $2}') | true",
+
+    "docker-build": "docker build -t angular2 .",
+    "docker": "npm run docker-build && docker run -it --rm -p 3000:3000 -p 3001:3001 angular2"
   },
   "private": true,
   "dependencies": {
@@ -84,6 +95,7 @@
     "babel-preset-es2015": "*",
     "babel-preset-stage-0": "^6.16.0",
     "babel-register": "^6.16.3",
+    "concurrently": "^3.1.0",
     "codelyzer": "^0.0.26",
     "css-loader": "^0.25.0",
     "cssnano": "^3.8.0",
