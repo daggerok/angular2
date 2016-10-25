@@ -81,7 +81,7 @@ export default {
       /*
       {
         include,
-        test: /template.html$/,
+        test: /app.template.html$/,
         loader: 'ng-cache?prefix=[dir]/[dir]',
       },
       */
