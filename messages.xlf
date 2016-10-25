@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="c6d3685954c95e35cb581515a0ccb1e65707847d" datatype="html">
+        <source>app</source>
+        <target/>
+        <note priority="1" from="description">An introduction header for this sample</note>
+        <note priority="1" from="meaning">User welcome</note>
+      </trans-unit>
+      <trans-unit id="f3a5f3ae080a311a0fd964955bf0c63d2f2248b3" datatype="html">
+        <source>app</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

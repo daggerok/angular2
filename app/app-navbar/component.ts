@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+
 @Component({
+  moduleId: module.id,
   selector: 'app-navbar',
-  templateUrl: 'app/app-navbar/template.html'
+  templateUrl: 'template.html'
 })
 export class AppNavbarComponent { }
