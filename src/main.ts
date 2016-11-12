@@ -14,7 +14,7 @@ import { enableProdMode } from '@angular/core';
 
 import { AppModule } from './app';
 
-if ('production' === process.env.ENV) {
+if ('production' === process.env.NODE_ENV) {
   enableProdMode();
 }
 

@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.18",
+    "version": "1.0.0-beta.21",
     "name": "angular-2"
   },
   "apps": [
@@ -12,20 +12,15 @@
       ],
       "index": "assets/index.html",
       "main": "main.ts",
-      "test": "test.ts",
       "module": "app/module.ts",
       "tsconfig": "tsconfig.json",
-      "prefix": "admin-ui",
+      "prefix": "angular-2",
       "mobile": false,
       "styles": [
         "styles.styl"
       ],
       "scripts": [],
-      "environments": {
-        "source": "environments/environment.ts",
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
+      "environments": {}
     }
   ],
   "addons": [],

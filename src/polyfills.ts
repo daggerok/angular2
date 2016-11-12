@@ -1,5 +1,10 @@
-// // core-js
-// import 'core-js';
+/**
+ * polyfills
+ */
+
+import 'ie-shim';
+import 'ts-helpers';
+
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
 import 'core-js/es6/function';
@@ -16,14 +21,9 @@ import 'core-js/es6/set';
 import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
-import 'zone.js/dist/zone';
-// import 'zone.js/dist/zone.js';
+import 'zone.js/dist/zone.js';
 
-// ie-shim
-import 'ie-shim';
-import 'ts-helpers';
-
-if ('development' === process.env.ENV) {
+if ('development' === process.env.NODE_ENV) {
   Error['stackTraceLimit'] = Infinity;
   require('zone.js/dist/long-stack-trace-zone');
 }
