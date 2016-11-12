@@ -9,19 +9,20 @@ exports.config = {
 
   specs: [
     // because this file is located in 'config/proptractpr' folder
-    '../../e2e/**/*.e2e-spec.ts'
+    '../e2e/**/*.e2e-spec.ts'
   ],
 
   capabilities: {
-    //browserName: 'chrome',
-    browserName: 'phantomjs',
+    // browserName: 'firefox',
+    browserName: 'chrome',
+    // browserName: 'phantomjs',
   },
 
   /**
    * Can be used to specify the phantomjs binary path.
    * This can generally be ommitted if you installed phantomjs globally.
    */
-  'phantomjs.binary.path': require('phantomjs').path,
+  'phantomjs.binary.path': require('phantomjs-prebuilt').path,
 
   /**
    * Command line args to pass to ghostdriver, phantomjs's browser driver.
