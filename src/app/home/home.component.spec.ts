@@ -25,17 +25,4 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it(`should have as name 'badass'`, async(() => {
-    let home = TestBed.createComponent(HomeComponent);
-    let app = home.debugElement.componentInstance;
-    expect(app.name).toEqual('badass');
-  }));
-
-  it('should render title in a h3 tag', async(() => {
-    let home = TestBed.createComponent(HomeComponent);
-    home.detectChanges();
-    let compiled = home.debugElement.nativeElement;
-    expect(compiled.querySelector('h3').textContent).toContain('hi, badass!');
-  }));
 });

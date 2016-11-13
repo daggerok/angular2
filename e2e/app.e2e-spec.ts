@@ -1,14 +1,14 @@
-import { Angular2Page } from './app.po';
+import { Material2Page } from './app.po';
 
-describe('app angular-2-home h3', function() {
-  let page: Angular2Page;
+describe('material2 App', function() {
+  let page: Material2Page;
 
   beforeEach(() => {
-    page = new Angular2Page();
+    page = new Material2Page();
   });
 
-  it('should display message saying "hi, badass!"', () => {
+  it('should display message saying home works', () => {
     page.navigateTo();
-    expect(page.getAppAngular2HomeH3Text()).toEqual('hi, badass!');
+    expect(page.getParagraphText()).toEqual('home works!');
   });
 });

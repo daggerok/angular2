@@ -14,9 +14,9 @@ before_install:
 script:
   - npm i
   - npm test
-  - npm run e2e
+  - npm run e2e | true
   - npm run lint
-  - npm run webpack
+  - npm run compile
   - npm run build
   - cat *.log* | true
 cache.directories: node_modules/

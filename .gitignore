@@ -1,4 +1,3 @@
-/_test-output/
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
@@ -20,16 +19,15 @@
 # misc
 /.sass-cache
 /connect.lock
-/coverage
-npm-debug.log*
-*.log
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
 /typings
 
-# compile putput
+# e2e
 /e2e/*.js
 /e2e/*.map
-/src/*.js
-/src/*.map
 
 #System Files
 .DS_Store

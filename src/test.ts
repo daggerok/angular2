@@ -14,9 +14,10 @@ declare var require: any;
 // Prevent Karma from running prematurely.
 __karma__.loaded = function () {};
 
+
 Promise.all([
-  require('@angular/core/testing'),
-  require('@angular/platform-browser-dynamic/testing')
+  System.import('@angular/core/testing'),
+  System.import('@angular/platform-browser-dynamic/testing')
 ])
   // First, initialize the Angular testing environment.
   .then(([testing, testingBrowser]) => {
