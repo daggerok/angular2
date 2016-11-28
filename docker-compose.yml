@@ -1,11 +1,28 @@
 version: '2'
-
 services:
-
-  angular2nginx:
-    container_name: angular2nginx
+  angular-2-nginx:
+    container_name: angular-2-nginx
     image: nginx:latest
     volumes:
       - ./dist:/usr/share/nginx/html
     ports:
       - "80:80"
+  angular-2-mongo:
+    container_name: angular-2-mongo
+    image: mongo
+    environment:
+      MONGO_PORT_27017_TCP_PORT: 27017
+    ports:
+      - "27017:27017"
+  #https://github.com/mongo-express/mongo-express-docker
+  angular-2-mongo-express:
+    container_name: angular-2-mongo-express
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    links:
+      - angular-2-mongo
+    environment:
+      ME_CONFIG_MONGODB_SERVER: angular-2-mongo
+      ME_CONFIG_OPTIONS_EDITORTHEME: ambiance
+      ME_CONFIG_SITE_BASEURL: /

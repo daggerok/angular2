@@ -9,6 +9,7 @@ npm run lint
 npm run build
 npm run serve
 npm run webpack
+npm run api-server:bootRun
 ```
 
 but angular-cli for code generation

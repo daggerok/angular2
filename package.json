@@ -35,7 +35,7 @@
 
     "lint": "tslint 'src/**/*.ts' -c ./config/tslint.json --noUnusedParameters --noUnusedLocals",
 
-    "test": "npm run e2e",
+    "test": "npm run protractor",
 
     "e2e": "npm-run-all -p prepare-e2e wait-and-run-protractor",
     "pree2e": "webdriver-manager update",
@@ -44,7 +44,12 @@
     "postwait-and-run-protractor": "npm run stop",
     "wait": "sleep 25",
     "protractor": "protractor ./config/protractor.js",
-    "stop": "kill -9 $(ps waux | grep webpack-dev-server | grep -v color | awk '{print $2}') | true"
+    "stop": "kill -9 $(ps waux | grep webpack-dev-server | grep -v color | awk '{print $2}') | true",
+
+    "api-server:build": "bash ./server/gradlew -b ./server/build.gradle --parallel build",
+    "api-server:up": "bash ./server/gradlew -b ./server/build.gradle --parallel bootRun",
+    "api-server:down": "bash ./server/gradlew -b ./server/build.gradle --stop",
+    "api-server-up": "concurrently -p '[{name}]' -n 'API' -c 'bgGreen.bold' 'npm run api-server:up' --kill-others --success first"
   },
   "dependencies": {
     "@angular/common": "~2.2.3",
