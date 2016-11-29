@@ -22,17 +22,15 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 before_script:
   - docker-compose up -d
-  - bash ./server/gradlew -b ./server/build.gradle --parallel build
-  - bash ./server/gradlew -b ./server/build.gradle --parallel bootRun &
-  - npm i
-  - npm run pree2e
-  - npm run prepare-e2e &
+  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
+#  - npm i; npm run pree2e; npm run prepare-e2e &
 script:
   - npm i
   - npm run lint
-  - npm run build
   - npm run webpack
-  - npm run protractor
+#  - npm run protractor
+  - npm run e2e
+  - npm run build
   - cat npm-debug.log | true
 after_script:
   - bash ./server/gradlew -b ./server/build.gradle --stop
