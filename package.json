@@ -13,8 +13,7 @@
     "build": "ng build -- --prod",
     "start": "ng serve --port 8000",
     "lint": "tslint 'src/**/*.ts' --noUnusedParameters --noUnusedLocals",
-    "test": "karma start --singleRun",
-    "tdd": "ng test"
+    "test": "npm run e2e"
   },
   "private": true,
   "dependencies": {
@@ -47,11 +46,6 @@
     "concurrently": "^3.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
-    "karma": "1.2.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.0.2",
-    "karma-remap-istanbul": "^0.2.1",
     "npm-run-all": "^3.1.1",
     "protractor": "4.0.9",
     "rimraf": "^2.5.4",
