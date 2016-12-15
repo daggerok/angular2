@@ -37,19 +37,23 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
-#before_script:
+before_script:
 #  - docker-compose up -d
 #  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
 #  - npm i; npm run pree2e; npm run prepare-e2e &
-script:
   - npm i
+  - npm start &
+  - npm run pree2e &
+script:
   - npm test
-  - npm run e2e
+#  - npm run e2e
+  - ./node_modules/.bin/protractor
   - npm run lint
   - npm run compile
   - npm run build
   - cat npm-debug.log | true
-#after_script:
+after_script:
+  - true | npm run stop
 #  - bash ./server/gradlew -b ./server/build.gradle --stop
 #  - docker-compose kill
 cache.directories: node_modules/
