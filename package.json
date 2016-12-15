@@ -13,7 +13,7 @@
     "compile": "ng build",
     "build": "ng build -- --prod",
     "start": "ng serve --port 8000",
-    "lint": "tslint \"src/**/*.ts\"",
+    "lint": "tslint 'src/**/*.ts' --noUnusedParameters --noUnusedLocals",
     "test": "karma start --singleRun",
     "tdd": "ng test"
   },
