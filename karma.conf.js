@@ -37,7 +37,8 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: false,
 
-    // chrome setup for travis CI using chromium
+    /////////////////////////////////////////////////////
+    // chrome setup for travis CI using chromium begin //
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
@@ -45,4 +46,10 @@ module.exports = function (config) {
       },
     },
   });
+
+  if (process.env && process.env.TRAVIS) {
+    config.browsers = ['Chrome_travis_ci'];
+  }
+  // chrome setup for travis CI using chromium end //
+  ///////////////////////////////////////////////////
 };
