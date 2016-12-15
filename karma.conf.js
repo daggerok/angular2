@@ -35,6 +35,14 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: false,
+
+    // chrome setup for travis CI using chromium
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: [ ' — no-sandbox' ],
+      },
+    },
   });
 };
