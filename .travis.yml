@@ -42,12 +42,11 @@ before_script:
 #  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
 #  - npm i; npm run pree2e; npm run prepare-e2e &
   - npm i
-  - npm start &
-  - npm run pree2e &
+#  - npm start &
+#  - npm run pree2e &
 script:
-  - npm test
-#  - npm run e2e
-  - ./node_modules/.bin/protractor
+  - npm run e2e
+#  - ./node_modules/.bin/protractor
   - npm run lint
   - npm run compile
   - npm run build
