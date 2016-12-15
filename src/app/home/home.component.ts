@@ -25,6 +25,10 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {}
 
   public emitValue(value: any) {
-    this.valueEmitted.emit(value);
+    console.log(`emitting ${value}`);
+    if (value) {
+      this.valueEmitted.emit(value);
+    }
+    this.value = null;
   }
 }
