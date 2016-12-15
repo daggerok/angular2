@@ -12,7 +12,7 @@
     "protractor": "concurrently -p '[{name}]' -n 'E2E' -c 'bgGreen.bold' 'protractor' --kill-others --success first",
     "compile": "ng build",
     "build": "ng build -- --prod",
-    "start": "ng serve",
+    "start": "ng serve --port 8000",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "karma start --singleRun",
     "tdd": "ng test"
@@ -29,7 +29,7 @@
     "@angular/router": "~3.1.0",
     "@angular/material": "^2.0.0-alpha.10",
     "core-js": "^2.4.1",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   },
@@ -37,7 +37,7 @@
     "@types/jasmine": "^2.2.30",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.19-3",
-    "codelyzer": "1.0.0-beta.1",
+    "codelyzer": "2.0.0-beta.3",
     "concurrently": "^3.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
@@ -50,8 +50,8 @@
     "protractor": "4.0.9",
     "rimraf": "^2.5.4",
     "ts-node": "1.2.1",
-    "tslint": "3.13.0",
-    "typescript": "~2.0.3",
+    "tslint": "4.0.2",
+    "typescript": "2.1.1",
     "webdriver-manager": "10.2.5"
   }
 }
