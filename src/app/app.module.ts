@@ -13,13 +13,16 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { Material2Routings } from './app.routings';
+
+import { HomeComponent } from './home/home.component';
+import { DialogComponent } from './home/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    DialogComponent,
     // // deprecated
     // MdToolbar,
     // MdCard,

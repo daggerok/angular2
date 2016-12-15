@@ -4,7 +4,7 @@ import { HomeComponent } from './home';
 
 export const Material2Routings = RouterModule.forRoot([
   {
-    path: '',
+    path: '**',
     component: HomeComponent
   }
 ]);
