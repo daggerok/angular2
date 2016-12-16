@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdIconRegistry, MdIconModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { Material2Routes } from './app.routes';
@@ -26,7 +26,7 @@ import { TodoComponent } from './todo/todo.component';
     HttpModule,
     Material2Routes,
   ],
-  providers: [],
+  providers: [MdIconRegistry], // no provider for MdIconRegistry
   bootstrap: [AppComponent]
 })
 export class AppModule {}

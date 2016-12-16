@@ -11,7 +11,7 @@
     "stop": "kill -9 $(ps waux| grep angular-cli| grep -v color| awk '{print $2}') | true",
     "protractor": "concurrently -p '[{name}]' -n 'E2E' -c 'bgGreen.bold' 'protractor' --kill-others --success first",
     "compile": "ng build",
-    "build": "ng build -- --prod",
+    "build": "ng build --prod",
     "start": "ng serve --port 8000",
     "lint": "tslint 'src/**/*.ts' --noUnusedParameters --noUnusedLocals",
     "test": "protractor"

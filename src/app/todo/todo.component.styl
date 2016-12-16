@@ -1,0 +1,32 @@
+size = 30px
+completedColor = #9d9d9d
+fontSize = 16px
+
+.list-item
+  width 100%
+  border-bottom 1px solid #ccc
+
+.list-item button
+  display none
+
+.list-item button /deep/ .md-checkbox-label
+  margin 10px 0
+
+.list-item button .material-icons
+  font-size fontSize
+
+.list-item:hover button
+  float right
+  margin 7px 5px
+  width size
+  height size
+  display inline
+
+.completed
+  color completedColor
+  text-decoration line-through
+
+.fab-add
+  position absolute
+  right size
+  top 50px

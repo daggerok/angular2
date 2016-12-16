@@ -1,3 +1,49 @@
-<p>
-  todo works!
-</p>
+<md-card class="todoapp">
+  <md-toolbar color="primary">
+    material TODO
+    <button class="fab-add"
+            md-fab=""
+            (click)="todoDialog()">
+      <md-icon>add</md-icon>
+    </button>
+  </md-toolbar>
+
+  <md-card-content *ngIf="todos.length">
+    <md-list>
+      <md-list-item *ngFor="
+        let todo of todos;
+        let id = index;
+      ">
+        <div class="list-item">
+          <md-checkbox color="primary"
+                       type="checkbox"
+                       [(ngModel)]="todo.completed">
+            <span [class.completed]="todo.completed">{{ todo.title }}</span>
+          </md-checkbox>
+          <span>
+            <button color="primary"
+                    md-mini-fab=""
+                    (click)="remove(id)">
+              <md-icon>delete_forever</md-icon>
+            </button>
+            <button color="primary"
+                    md-mini-fab=""
+                    [disabled]="todo.completed"
+                    (click)="todoDialog(todo)">
+              <md-icon>mode_edit</md-icon>
+            </button>
+          </span>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-card-content>
+</md-card>
+
+<app-dialog [title]="'a new task'"
+            [template]="'enter task, please...'"
+            [placeholder]="'wtf?'"
+            [okText]="' ^_^ '"
+            [value]="fieldValue"
+            (valueEmitted)="updateTodo($event)"
+            [showPromp]="showDialog">
+</app-dialog>
