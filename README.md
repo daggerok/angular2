@@ -1,13 +1,11 @@
-# angular2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=master)](https://travis-ci.org/daggerok/angular2)
+# bootswatch [![build](https://travis-ci.org/daggerok/angular2.svg?branch=bootswatch)](https://travis-ci.org/daggerok/angular2)
 
 ```bash
 npm i
 npm start
-npm run dev
 npm run e2e
 npm run lint
 npm run build
-npm run serve
 npm run webpack
 npm run api-server:bootRun
 ```

@@ -1,14 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import './home.component.styl';
 
 @Component({
-  selector: 'angular-2-home',
+  selector: 'bw-home',
   templateUrl: './home.component.html',
-  // styles: [require('./home.component.styl').toString()],
 })
-export class HomeComponent implements OnInit {
-  name = 'badass';
-  constructor() {}
-  public ngOnInit() {}
+export class HomeComponent {
+  name = 'bootswatch';
 }

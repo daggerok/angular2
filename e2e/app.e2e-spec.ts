@@ -1,6 +1,6 @@
 import { Angular2Page } from './app.po';
 
-describe('app angular-2-home h3', function() {
+describe('app bw-home h3', function() {
   let page: Angular2Page;
 
   beforeEach(() => {
@@ -9,6 +9,6 @@ describe('app angular-2-home h3', function() {
 
   it('should display message saying "hi, badass!"', () => {
     page.navigateTo();
-    expect(page.getAppAngular2HomeH3Text()).toEqual('hi, badass!');
+    expect(page.getAppAngular2HomeH3Text()).toEqual('hi, bootswatch!');
   });
 });

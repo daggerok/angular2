@@ -54,7 +54,7 @@ export default {
     {
       test: /\.css$/i,
       include: [
-        pathTo('./node_modules/angular'),
+        pathTo('./node_modules/bootswatch'),
         pathTo('./node_modules/bootstrap/dist'),
         include,
       ],

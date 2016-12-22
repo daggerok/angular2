@@ -122,28 +122,28 @@
   ],
   "directive-selector-prefix": [
     false,
-    "angular-2"
+    "bw"
   ],
   "component-selector-prefix": [
     false,
-    "angular-2"
+    "bw"
   ],
   "directive-selector": [
     true,
     "attribute",
-    "angular-2",
+    "bw",
     "camelCase"
   ],
   "component-selector": [
     true,
     "element",
-    "angular-2",
+    "bw",
     "kebab-case"
   ],
   "pipe-naming": [
     true,
     "camelCase",
-    "angular-2"
+    "bw"
   ],
   "no-input-rename": true,
   "no-output-rename": true,
