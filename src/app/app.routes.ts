@@ -7,4 +7,8 @@ export const AppRoutes = RouterModule.forRoot([
     path: '',
     component: HomeComponent,
   },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
 ]);

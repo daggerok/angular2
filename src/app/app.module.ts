@@ -19,7 +19,11 @@ import { ChatService } from './services/chat.service';
     AppComponent,
     HomeComponent,
   ],
-  providers: [ChatService],
-  bootstrap: [AppComponent],
+  providers: [
+    ChatService,
+  ],
+  bootstrap: [
+    AppComponent,
+  ],
 })
 export class AppModule {}

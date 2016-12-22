@@ -3,7 +3,6 @@
  */
 
 import 'ie-shim';
-import 'ts-helpers';
 
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
@@ -27,3 +26,6 @@ if ('development' === process.env.NODE_ENV) {
   Error['stackTraceLimit'] = Infinity;
   require('zone.js/dist/long-stack-trace-zone');
 }
+
+import 'rxjs';
+import 'rxjs/Rx';

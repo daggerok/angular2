@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.20-4",
+    "version": "1.0.0-beta.24",
     "name": "sc"
   },
   "apps": [
@@ -18,13 +18,20 @@
       "mobile": false,
       "styles": [
         "styles.styl"
-      ]
+      ],
+      "scripts": [],
+      "environments": {}
     }
   ],
+  "addons": [],
+  "packages": [],
   "e2e": {
     "protractor": {
-      "config": "./config/protractor.js"
+      "config": "./config/protractor/conf.js"
     }
+  },
+  "test": {
+    "karma": {}
   },
   "defaults": {
     "styleExt": "styl",
@@ -32,6 +39,14 @@
     "inline": {
       "style": false,
       "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
     }
   }
 }
