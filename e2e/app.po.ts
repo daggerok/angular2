@@ -6,6 +6,7 @@ export class Angular2Page {
   }
 
   getAppAngular2HomeH3Text() {
-    return element(by.css('app sc-home h3')).getText();
+    // browser.waitForAngular();
+    return element(by.id('e2e')).getText();
   }
 }

@@ -8,6 +8,7 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 import '@angular/forms';
+import '@angular/compiler';
 
 import 'jquery';
 

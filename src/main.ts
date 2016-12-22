@@ -15,9 +15,6 @@ if ('production' === process.env.NODE_ENV) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(AppModule);
-
-platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(console.log);
 
