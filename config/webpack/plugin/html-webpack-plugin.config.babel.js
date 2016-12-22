@@ -1,9 +1,9 @@
-export default (isProdOrGhPages) => ({
+export default (isProduction) => ({
   chunksSortMode: 'none',
   filename: 'index.html',
   favicon: './src/assets/favicon.ico',
   template: './src/assets/index.html',
-  minify: !isProdOrGhPages ? false : {
+  minify: !isProduction ? false : {
       collapseWhitespace: true,
       removeComments: true,
       minifyCSS: true,

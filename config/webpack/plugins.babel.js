@@ -40,7 +40,7 @@ export default [
   new OccurenceOrderPlugin(true),
   new ProvidePlugin(providePluginConfig()),
   isProdOrGhPages ? undefined : new NoErrorsPlugin(),
-  new DefinePlugin(definePluginConfig(isProdOrGhPages)),
+  new DefinePlugin(definePluginConfig()),
   new HtmlWebpackPlugin(htmlWebpackPluginConfig(isProdOrGhPages)),
   ...prodPlugins,
 ].filter(plugin => !!plugin);

@@ -58,12 +58,12 @@ export default {
         pathTo('./node_modules/bootstrap/dist'),
         include,
       ],
-      loader: extractCSS.extract('style-loader', 'css-loader?importLoader=1&sourceMap', 'postcss-loader'),
+      loader: extractCSS.extract('style-loader', `css-loader?importLoader=1${isProdOrGhPages ? '' : '&sourceMap'}`, 'postcss-loader'),
     },
     {
       include,
       test: /\.styl$/i,
-      loader: extractCSS.extract('style-loader', 'css-loader!postcss-loader!stylus-loader?sourceMap'),
+      loader: extractCSS.extract('style-loader', `css-loader!postcss-loader!stylus-loader${isProdOrGhPages ? '' : '?sourceMap'}`),
     },
     {
       include: exclude,
@@ -76,7 +76,10 @@ export default {
       test: assets,
     },
     {
-      exclude: [exclude, resources],
+      exclude: [
+        exclude,
+        resources,
+      ],
       loader: 'file-loader?name=[path]/[name].[ext]',
       test: assets,
     },
