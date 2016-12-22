@@ -1,4 +1,3 @@
-import { resolve } from 'path';
 import { publicPath } from './output.babel';
 
 const devServer = {

@@ -1,6 +1,6 @@
-import ENV_NODE from './env.babel';
+import { isGhPages } from './env.babel';
 
-export const publicPath = 'ghpages' == ENV_NODE ? '/angular2/' : '/';
+export const publicPath = isGhPages ? '/angular2/' : '/';
 export const staticDir = './dist';
 
 export default {

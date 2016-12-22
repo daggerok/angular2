@@ -13,9 +13,6 @@ import '@angular/forms';
 // import '@angular/compiler';
 // import '@angular/compiler-cli';
 
-import 'rxjs';
-import 'rxjs/Rx';
-
 import 'jquery';
 
 import 'bootstrap/dist/css/bootstrap.css';

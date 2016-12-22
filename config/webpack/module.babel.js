@@ -1,20 +1,28 @@
-import path from 'path';
+import { resolve } from 'path';
 import ExtractPlugin from 'extract-text-webpack-plugin';
+import { isProdOrGhPages } from './env.babel';
 
 const exclude = /\/node_modules\//;
 const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/i;
-const resolvePath = (rel) => path.resolve(process.cwd(), rel);
-const resources = resolvePath('./src/assets');
-const include = resolvePath('./src');
+const pathTo = (rel) => resolve(process.cwd(), rel);
+const resources = pathTo('./src/assets');
+const include = pathTo('./src');
 
 export const extractCSS = new ExtractPlugin('[name].css', { allChunks: true });
 
 export default {
-  preLoaders: [{
-    include,
-    test: /\.js$/i,
-    loader: 'source-map',
-  }],
+  preLoaders: [
+    isProdOrGhPages ? undefined : {
+      include,
+      test: /\.ts$/i,
+      loader: 'tslint-loader',
+    },
+    {
+      include,
+      test: /\.js$/i,
+      loader: 'source-map-loader',
+    },
+  ].filter(preLoader => !!preLoader),
   loaders: [
     {
       test: /\.ts$/i,
@@ -27,7 +35,7 @@ export default {
     {
       include,
       test: /\.js$/i,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: [
           'stage-0',
@@ -40,36 +48,36 @@ export default {
     },
     {
       include,
-      loader: 'raw',
+      loader: 'raw-loader',
       test: /\.html$/i,
     },
     {
       test: /\.css$/i,
       include: [
-        resolvePath('./node_modules/angular'),
-        resolvePath('./node_modules/bootstrap/dist'),
+        pathTo('./node_modules/angular'),
+        pathTo('./node_modules/bootstrap/dist'),
         include,
       ],
-      loader: extractCSS.extract('style', 'css?importloader=1&sourceMap', 'postcss'),
+      loader: extractCSS.extract('style-loader', 'css-loader?importLoader=1&sourceMap', 'postcss-loader'),
     },
     {
       include,
       test: /\.styl$/i,
-      loader: extractCSS.extract('style', 'css!postcss!stylus?sourceMap'),
+      loader: extractCSS.extract('style-loader', 'css-loader!postcss-loader!stylus-loader?sourceMap'),
     },
     {
       include: exclude,
-      loader: 'file?name=vendors/[1]&regExp=node_modules/(.*)',
+      loader: 'file-loader?name=vendors/[1]&regExp=node_modules/(.*)',
       test: assets,
     },
     {
       include: resources,
-      loader: 'file?name=resources/[1]&regExp=src/assets/(.*)',
+      loader: 'file-loader?name=resources/[1]&regExp=src/assets/(.*)',
       test: assets,
     },
     {
       exclude: [exclude, resources],
-      loader: 'file?name=[path]/[name].[ext]',
+      loader: 'file-loader?name=[path]/[name].[ext]',
       test: assets,
     },
   ],

@@ -9,12 +9,7 @@ import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 
 import { vendors } from './entry.babel';
 import { extractCSS } from './module.babel';
-import {
-  isGhPages,
-  isProd
-} from './env.babel';
-
-const prod = isProd || isGhPages;
+import { isProdOrGhPages } from './env.babel';
 
 const {
   AggressiveMergingPlugin,
@@ -24,7 +19,7 @@ const {
   DedupePlugin,
 } = optimize;
 
-const prodPlugins = !prod ? [] : [
+const prodPlugins = !isProdOrGhPages ? [] : [
     new DedupePlugin(),
     new AggressiveMergingPlugin(),
     new UglifyJsPlugin({
@@ -36,7 +31,7 @@ const prodPlugins = !prod ? [] : [
     new OccurenceOrderPlugin(true),
     new CommonsChunkPlugin({
       name: vendors,
-      filename: `${vendors}.js`,
+      filename: '[name].js',
       minChunks: Infinity,
     }),
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
@@ -44,12 +39,12 @@ const prodPlugins = !prod ? [] : [
 
 export default [
   extractCSS,
-  prod ? undefined : new NoErrorsPlugin(),
+  isProdOrGhPages ? undefined : new NoErrorsPlugin(),
   new HtmlWebpackPlugin({
     filename: 'index.html',
     favicon: './src/assets/favicon.ico',
     template: './src/assets/index.html',
-    minify: !prod ? false : {
+    minify: !isProdOrGhPages ? false : {
       collapseWhitespace: true,
       removeComments: true,
       minifyCSS: true,
@@ -63,7 +58,7 @@ export default [
   }),
   new DefinePlugin({
     'process.env': {
-      'NODE_ENV': JSON.stringify(prod ? 'production' : 'development'),
+      'NODE_ENV': JSON.stringify(isProdOrGhPages ? 'production' : 'development'),
     },
   }),
   ...prodPlugins,

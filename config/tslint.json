@@ -1,5 +1,6 @@
 {
   "rulesDirectory": [
+    "../node_modules/tslint-eslint-rules/dist/rules",
     "../node_modules/codelyzer"
   ],
   "jsRules": {
@@ -28,7 +29,8 @@
     ],
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "triple-equals": [
       true,
@@ -74,7 +76,8 @@
     ],
     "semicolon": [
       true,
-      "always"
+      "always",
+      "ignore-bound-class-methods"
     ],
     "triple-equals": [
       true,
@@ -103,14 +106,8 @@
       "check-type"
     ]
   },
-  "directive-selector-prefix": [
-    false,
-    "angular-2"
-  ],
-  "component-selector-prefix": [
-    false,
-    "angular-2"
-  ],
+  "component-class-suffix": true,
+  "directive-class-suffix": true,
   "directive-selector-name": [
     true,
     "camelCase"
@@ -123,11 +120,14 @@
     true,
     "attribute"
   ],
-  "no-input-rename": true,
-  "no-output-rename": true,
-  "use-pipe-transform-interface": true,
-  "component-class-suffix": true,
-  "directive-class-suffix": true,
+  "directive-selector-prefix": [
+    false,
+    "angular-2"
+  ],
+  "component-selector-prefix": [
+    false,
+    "angular-2"
+  ],
   "directive-selector": [
     true,
     "attribute",
@@ -140,17 +140,20 @@
     "angular-2",
     "kebab-case"
   ],
+  "pipe-naming": [
+    true,
+    "camelCase",
+    "angular-2"
+  ],
+  "no-input-rename": true,
+  "no-output-rename": true,
+  "use-pipe-transform-interface": true,
   "use-input-property-decorator": true,
   "use-output-property-decorator": true,
   "use-host-property-decorator": true,
   "no-attribute-parameter-decorator": true,
   "no-forward-ref": true,
   "use-life-cycle-interface": true,
-  "pipe-naming": [
-    true,
-    "camelCase",
-    "angular-2"
-  ],
   "import-destructuring-spacing": true,
   "templates-use-public": true,
   "no-access-missing-member": true,
