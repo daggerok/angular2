@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { publicPath } from './output.babel';
 
 const devServer = {
@@ -5,17 +6,17 @@ const devServer = {
   inline: true,
   progress: true,
   stats: 'minimal',
-
+  contentBase: './src',
   historyApiFallback: {
-    index: publicPath
+    index: publicPath,
   },
 
   proxy: {
     "/api": {
       target: "http://localhost:8080",
-      secure: false
-    }
-  }
+      secure: true,
+    },
+  },
 };
 
 export default devServer;

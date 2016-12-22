@@ -5,38 +5,35 @@
   "angular-cli": {},
   "scripts": {
     "sleep": "sleep 3",
-
     "clean": "rimraf -rf ./dist",
     "prebuild": "npm run clean",
     "prestart": "npm i",
     "predev": "npm i",
-
     "json-server": "babel-node ./node_modules/.bin/json-server --watch -r ./config/json-server/routes.json -c ./config/json-server/config.json ./config/json-server/testdata.js",
     "start-server": "browser-sync start -c ./config/bs-config.js",
-
-    "watch": "npm run webpack -- -w",
-    "webpack": "NODE_ENV=development webpack --config=./config/webpack/dev.babel.js -c --process",
     "dev": "npm-run-all -p watch start-server",
-
     "open-dev": "open-url localhost:8000",
     "open-dev-url": "npm-run-all sleep open-dev",
-    "webpack-dev-server": "NODE_ENV=development webpack-dev-server -w -d --config=./config/webpack/dev.babel.js --content-base=./src",
-    "json-server.start": "npm-run-all -p webpack-dev-server json-server open-dev-url",
-    "start.ui": "npm-run-all -p webpack-dev-server open-dev-url",
-    "start": "npm-run-all -p webpack-dev-server",
-
     "open-prod": "open-url localhost:8080",
     "open-prod-url": "npm-run-all sleep open-prod",
     "start-server-and-open-prod-url": "npm-run-all -p open-prod-url",
-    "json-server.start-server-and-open-prod-url": "npm-run-all -p open-prod-url json-server",
-    "build": "NODE_ENV=production webpack --config=./config/webpack/prod.babel.js -c --progress --profile --bail -p",
-    "gh-pages": "NODE_ENV=production webpack --config=./config/webpack/gh-pages.babel.js -c --progress --profile --bail -p",
     "serve": "npm-run-all build start-server",
+    "json-server.start-server-and-open-prod-url": "npm-run-all -p open-prod-url json-server",
+    "json-server.start": "npm-run-all -p webpack-dev-server json-server open-dev-url",
 
     "lint": "tslint 'src/**/*.ts' -c ./config/tslint.json --noUnusedParameters --noUnusedLocals",
 
-    "test": "npm run protractor",
+    "watch": "npm run webpack -- -w",
+    "start.ui": "npm-run-all -p webpack-dev-server open-dev-url",
+    "start": "npm-run-all -p webpack-dev-server",
 
+    "compile": "webpack --config=./config/webpack.config.babel.js -c --process --bail",
+    "build": "NODE_ENV=production npm run compile",
+    "gh-pages": "NODE_ENV=ghpages npm run compile",
+    "webpack": "NODE_ENV=development npm run compile",
+    "webpack-dev-server": "NODE_ENV=development webpack-dev-server -w -d --config=./config/webpack.config.babel.js --content-base=./src",
+
+    "test": "npm run protractor",
     "e2e": "npm-run-all -p prepare-e2e wait-and-run-protractor",
     "pree2e": "webdriver-manager update",
     "prepare-e2e": "concurrently -p '[{name}]' -n 'HTTP' -c 'bgYellow.bold' 'npm run webpack-dev-server' --kill-others --success first",
@@ -46,10 +43,18 @@
     "protractor": "protractor ./config/protractor.js",
     "stop": "kill -9 $(ps waux | grep webpack-dev-server | grep -v color | awk '{print $2}') | true",
 
-    ":build": "bash ./server/gradlew -b ./server/build.gradle --parallel build",
-    "api-server:up": "bash ./server/gradlew -b ./server/build.gradle --parallel bootRun",
-    "api-server:down": "bash ./server/gradlew -b ./server/build.gradle --stop",
-    "api-server-up": "concurrently -p '[{name}]' -n 'API' -c 'bgGreen.bold' 'npm run api-server:up' --kill-others --success first"
+    "up": "npm-run-all docker-compose:up api-server-up",
+    "down": "true | echo &(npm-run-all api-server:stop docker-compose:down)",
+
+    "docker-compose:up": "docker-compose up -d",
+    "docker-compose:down": "docker-compose down",
+
+    "api-server": "bash ./server/gradlew -b ./server/build.gradle ",
+    "api-server:status": "npm run api-server -- --status",
+    "api-server:up": "npm run api-server -- clean build bootRun",
+    "api-server-up": "true | (concurrently -p '[{name}]' -n 'API' -c 'bgGreen.bold' 'npm run api-server:up' --kill-others --success first &)",
+    "api-server:stop": "npm run api-server -- --stop",
+    "api-server:build": "npm run api-server -- clean build -x test"
   },
   "dependencies": {
     "@angular/common": "~2.2.4",
@@ -83,10 +88,10 @@
     "@types/uglify-js": "^2.0.27",
     "@types/webpack": "^2.0.0",
     "angular-cli": "^1.0.0-beta.24",
+    "angular2-router-loader": "^0.3.4",
     "angular2-template-loader": "^0.6.0",
     "assets-webpack-plugin": "^3.4.0",
     "autoprefixer": "^6.5.2",
-    "angular2-router-loader": "^0.3.4",
     "awesome-typescript-loader": "^2.2.1",
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
@@ -98,8 +103,8 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.16.3",
     "browser-sync": "^2.18.2",
-    "concurrently": "^3.1.0",
     "codelyzer": "^2.0.0-beta.1",
+    "concurrently": "^3.1.0",
     "css-loader": "^0.26.0",
     "cssnano": "^3.8.0",
     "editorconfig": "^0.13.2",
@@ -115,7 +120,7 @@
     "jasmine-spec-reporter": "2.7.0",
     "json-loader": "^0.5.4",
     "json-server": "^0.9.1",
-    "npm-run-all": "^3.1.1",
+    "npm-run-all": "^3.1.2",
     "open-url": "^2.0.2",
     "parse5": "^2.2.2",
     "phantomjs-prebuilt": "^2.1.13",
@@ -158,7 +163,7 @@
   "bugs": {
     "url": "https://github.com/daggerok/angular2/issues"
   },
-  "main": "config/webpack/prod.babel.js",
+  "main": "config/webpack.config.babel.js",
   "homepage": "https://github.com/daggerok/angular2#readme",
   "description": "angular2"
 }
