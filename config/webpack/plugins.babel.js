@@ -6,10 +6,17 @@ import {
 } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
+import CompressionWebpackPlugin from 'compression-webpack-plugin';
 
 import { vendors } from './entry.babel';
 import { extractCSS } from './module.babel';
 import { isProdOrGhPages } from './env.babel';
+import commonsChunkPluginVendorConfig from './plugin/commons-chunk-plugin/vendors.config.babel';
+import compressionWebpackPluginConfig from './plugin/compression-webpack-plugin.config.babel';
+import definePluginConfig from './plugin/provide-plugin.config.babel';
+import htmlWebpackPluginConfig from './plugin/html-webpack-plugin.config.babel';
+import providePluginConfig from './plugin/provide-plugin.config.babel';
+import uglifyJsPluginConfig from './plugin/uglify-js-plugin.config.babel';
 
 const {
   AggressiveMergingPlugin,
@@ -22,44 +29,18 @@ const {
 const prodPlugins = !isProdOrGhPages ? [] : [
     new DedupePlugin(),
     new AggressiveMergingPlugin(),
-    new UglifyJsPlugin({
-      // https://github.com/angular/angular/issues/10618
-      mangle: { keep_fnames: true, },
-      // include: resolve('./src'), option can be used only with already minified vendors
-      compress: { warnings: false, },
-    }),
-    new OccurenceOrderPlugin(true),
-    new CommonsChunkPlugin({
-      name: vendors,
-      filename: '[name].js',
-      minChunks: Infinity,
-    }),
+    new UglifyJsPlugin(uglifyJsPluginConfig),
+    new CompressionWebpackPlugin(compressionWebpackPluginConfig),
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
+    new CommonsChunkPlugin(commonsChunkPluginVendorConfig(vendors, '[name].js')),
 ];
 
 export default [
   extractCSS,
+  new OccurenceOrderPlugin(true),
+  new ProvidePlugin(providePluginConfig()),
   isProdOrGhPages ? undefined : new NoErrorsPlugin(),
-  new HtmlWebpackPlugin({
-    filename: 'index.html',
-    favicon: './src/assets/favicon.ico',
-    template: './src/assets/index.html',
-    minify: !isProdOrGhPages ? false : {
-      collapseWhitespace: true,
-      removeComments: true,
-      minifyCSS: true,
-      minifyJS: true,
-    },
-  }),
-  new ProvidePlugin({
-    jQuery: 'jquery',
-    $: 'jquery',
-    jquery: 'jquery',
-  }),
-  new DefinePlugin({
-    'process.env': {
-      'NODE_ENV': JSON.stringify(isProdOrGhPages ? 'production' : 'development'),
-    },
-  }),
+  new DefinePlugin(definePluginConfig(isProdOrGhPages)),
+  new HtmlWebpackPlugin(htmlWebpackPluginConfig(isProdOrGhPages)),
   ...prodPlugins,
 ].filter(plugin => !!plugin);

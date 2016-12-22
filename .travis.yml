@@ -21,18 +21,15 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
 before_script:
-  - npm run api-server:build
-  - npm run up
-#  - docker-compose up -d
-#  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
-##  - npm i; npm run pree2e; npm run prepare-e2e &
-script:
   - npm i
+  - bash ./server/gradlew -b ./server/build.gradle clean build -x test &
+  - docker-compose up -d
+  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
+script:
+  - npm run build
+  - npm run e2e
   - npm run lint
   - npm run webpack
-#  - npm run protractor
-  - npm run e2e
-  - npm run build
   - cat npm-debug.log | true
 after_script:
   - npm run down
