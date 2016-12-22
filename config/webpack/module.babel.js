@@ -55,15 +55,15 @@ export default {
       test: /\.css$/i,
       include: [
         pathTo('./node_modules/bootswatch'),
-        pathTo('./node_modules/bootstrap/dist'),
+        pathTo('./node_modules/bootstrap'),
         include,
       ],
-      loader: extractCSS.extract('style-loader', 'css-loader?importLoader=1&sourceMap', 'postcss-loader'),
+      loader: extractCSS.extract('style-loader', `css-loader?importLoader=1${isProdOrGhPages ? '' : '&sourceMap'}`, 'postcss-loader'),
     },
     {
       include,
       test: /\.styl$/i,
-      loader: extractCSS.extract('style-loader', 'css-loader!postcss-loader!stylus-loader?sourceMap'),
+      loader: extractCSS.extract('style-loader', `css-loader?importLoader=1!postcss-loader!stylus-loader${isProdOrGhPages ? '' : '?sourceMap'}`),
     },
     {
       include: exclude,

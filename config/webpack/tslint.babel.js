@@ -1,4 +1,4 @@
-import { isProduction } from './env.babel';
+import { isProd } from './env.babel';
 
 export default {
 
@@ -9,7 +9,7 @@ export default {
   // tslint does not interrupt the compilation by default
   // if you want any file with tslint errors to fail
   // set failOnHint to true
-  failOnHint: isProduction,
+  failOnHint: isProd,
 
   // can specify a custom config file relative to current directory
   // 'tslint-custom.json'

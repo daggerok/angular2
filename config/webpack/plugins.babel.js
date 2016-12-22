@@ -33,7 +33,7 @@ const prodPlugins = !isProdOrGhPages ? [] : [
     new CompressionWebpackPlugin(compressionWebpackPluginConfig),
     new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
     new CommonsChunkPlugin(commonsChunkPluginVendorConfig(vendors, '[name].js')),
-];
+  ];
 
 export default [
   extractCSS,
