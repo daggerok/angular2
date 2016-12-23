@@ -2,6 +2,10 @@ sudo: required
 dist: trusty
 language: java
 jdk: oraclejdk8
+language: node_js
+node_js:
+  - 6
+  - 7
 install: true
 env:
   DOCKER_COMPOSE_VERSION: 1.9.0
@@ -12,7 +16,6 @@ before_install:
   - curl -L $DOCKER_COPOSE_URL > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
-  - nvm install 7
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -22,7 +25,7 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 before_script:
   - npm i
-  - bash ./server/gradlew -b ./server/build.gradle clean build -x test &
+  - bash ./server/gradlew -b ./server/build.gradle build -x test
   - docker-compose up -d
   - bash ./server/gradlew -b ./server/build.gradle build bootRun &
 script:
