@@ -15,23 +15,21 @@ exports.config = {
   capabilities: {
     // browserName: 'firefox',
     browserName: 'chrome',
-    // browserName: 'phantomjs',
   },
 
-  /**
-   * Can be used to specify the phantomjs binary path.
-   * This can generally be ommitted if you installed phantomjs globally.
-   */
+  /*
+   // require phantomjs-prebuilt@2.1.13+
+   Can be used to specify the phantomjs binary path.
+   This can generally be ommitted if you installed phantomjs globally.
+
   'phantomjs.binary.path': require('phantomjs-prebuilt').path,
 
-  /**
-   * Command line args to pass to ghostdriver, phantomjs's browser driver.
-   * See https://github.com/detro/ghostdriver#faq
-   */
+   Command line args to pass to ghostdriver, phantomjs's browser driver.
+   See https://github.com/detro/ghostdriver#faq
+
   'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG'],
 
-  /**
-   * direct connect is nom supported by phantomjs, only chrome / firefox
+   direct connect is nom supported by phantomjs, only chrome / firefox
    */
   directConnect: true,
   chromeOnly: true,
