@@ -1,4 +1,4 @@
-export default (isProduction) => ({
+export default isProduction => ({
   chunksSortMode: 'none',
   filename: 'index.html',
   favicon: './src/assets/favicon.ico',
