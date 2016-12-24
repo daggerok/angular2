@@ -131,7 +131,7 @@
     "ts-helpers": "1.1.2",
     "ts-node": "1.7.2",
     "tslint": "4.2.0",
-    "tslint-eslint-rules": "3.2.1",
+    "tslint-eslint-rules": "3.2.2",
     "tslint-loader": "3.3.0",
     "typescript": "2.1.4",
     "url-loader": "0.5.7",
