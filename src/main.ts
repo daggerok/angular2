@@ -17,11 +17,3 @@ if ('production' === process.env.NODE_ENV) {
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch(console.log);
-
-/*
-// The browser platform without a compiler
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModuleFactory } from './app/factory';
-// Launch with the app module factory.
-platformBrowser().bootstrapModuleFactory(AppModuleFactory);
-*/

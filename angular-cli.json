@@ -1,6 +1,6 @@
 {
   "project": {
-    "version": "1.0.0-beta.24",
+    "version": "1.0.0-beta.26",
     "name": "bw"
   },
   "apps": [
@@ -39,16 +39,16 @@
     "styleExt": "styl",
     "prefixInterfaces": false,
     "inline": {
-      "style": false,
+      "style": true,
       "template": false
     },
     "spec": {
       "class": false,
-      "component": true,
-      "directive": true,
+      "component": false,
+      "directive": false,
       "module": false,
       "pipe": true,
-      "service": true
+      "service": false
     }
   }
 }
