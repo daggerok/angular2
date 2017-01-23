@@ -13,8 +13,8 @@ exports.config = {
   ],
 
   capabilities: {
-    // browserName: 'firefox',
     browserName: 'chrome',
+    // browserName: 'firefox',
     // browserName: 'phantomjs',
   },
 
