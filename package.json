@@ -29,10 +29,8 @@
 
     "stop": "kill -9 $(ps waux | grep browser-sync | grep -v grep | awk '{print $2}') | true",
 
-    "test": "npm-run-all e2e:*",
-    "e2e:build:": "npm run webpack",
-    "e2e:run-server-and-protractor": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'PROTRACTOR,HTTP' -c 'magenta,green'",
-
+    "pretest": "npm run webpack",
+    "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'PROTRACTOR,HTTP' -c 'green,magenta'",
     "protractor": "protractor ./config/protractor.js",
     "preprotractor": "npm-run-all sleep webdriver-manager-update",
     "webdriver-manager-update": "webdriver-manager update",
