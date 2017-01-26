@@ -29,6 +29,7 @@ before_script:
   - bash ./server/gradlew -b ./server/build.gradle build
   - bash ./server/gradlew -b ./server/build.gradle bootRun &
 script:
+  - npm update
   - npm run lint
   - npm t
   - npm run build
