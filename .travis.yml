@@ -29,10 +29,9 @@ before_script:
   - docker-compose up -d
   - bash ./server/gradlew -b ./server/build.gradle build bootRun &
 script:
-  - npm run build
-  - npm run e2e
   - npm run lint
-  - npm run webpack
+  - npm t
+  - npm run build
   - cat npm-debug.log | true
 after_script:
   - npm run down

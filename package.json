@@ -29,10 +29,8 @@
 
     "stop": "kill -9 $(ps waux | grep browser-sync | grep -v grep | awk '{print $2}') | true",
 
-    "test": "npm-run-all e2e:*",
-    "e2e:build:": "npm run webpack",
-    "e2e:run-server-and-protractor": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'PROTRACTOR,HTTP' -c 'magenta,green'",
-
+    "pretest": "npm run webpack",
+    "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'PROTRACTOR,HTTP' -c 'green,magenta'",
     "protractor": "protractor ./config/protractor.js",
     "preprotractor": "npm-run-all sleep webdriver-manager-update",
     "webdriver-manager-update": "webdriver-manager update",
@@ -79,7 +77,7 @@
     "@types/selenium-webdriver": "2.53.39",
     "@types/source-map": "0.5.0",
     "@types/uglify-js": "2.6.28",
-    "@types/webpack": "2.2.3",
+    "@types/webpack": "2.2.4",
     "angular-cli": "1.0.0-beta.26",
     "angular2-router-loader": "0.3.4",
     "angular2-template-loader": "0.6.0",
