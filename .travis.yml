@@ -24,10 +24,10 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
 before_script:
-  - bash ./server/gradlew -b ./server/build.gradle build -x test
   - docker-compose up -d
-  - bash ./server/gradlew -b ./server/build.gradle build bootRun &
   - npm i
+  - bash ./server/gradlew -b ./server/build.gradle build
+  - bash ./server/gradlew -b ./server/build.gradle bootRun &
 script:
   - npm run lint
   - npm t
