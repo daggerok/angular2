@@ -15,7 +15,7 @@
     "server": "npm run start-server -- --no-notify --no-open --no-online --no-inject-changes --no-reload-on-restart",
     "serve": "npm-run-all build start-server",
 
-    "lint": "tslint -t verbose --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals 'src/**/*.ts' -c ./config/tslint.json",
+    "lint": "tslint --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals -t verbose -c ./config/tslint.json 'src/**/*.ts'",
 
     "open": "open-url localhost:8000",
     "open-url": "npm-run-all sleep open-prod",
