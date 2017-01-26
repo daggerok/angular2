@@ -24,18 +24,11 @@ before_install:
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
 before_script:
-  - docker-compose up -d
   - npm i
-  - bash ./server/gradlew -b ./server/build.gradle build
-  - bash ./server/gradlew -b ./server/build.gradle bootRun &
-script:
   - npm update
+script:
   - npm run lint
   - npm t
   - npm run build
   - cat npm-debug.log | true
-after_script:
-  - npm run down
-#  - bash ./server/gradlew -b ./server/build.gradle --stop
-#  - docker-compose kill
 cache.directories: node_modules/
