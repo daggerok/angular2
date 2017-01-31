@@ -25,5 +25,8 @@ export default {
   watchOptions,
   profile: 'web',
   devServer: isDev ? devServer : isDev,
-  devtool: isProdOrGhPages ? 'source-map' : '#eval',
+  devtool: isProdOrGhPages ? '#source-map' : '#eval',
+  colors: true,
+  process: true,
+  bail: true,
 };
