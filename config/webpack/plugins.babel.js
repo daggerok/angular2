@@ -26,14 +26,14 @@ const {
   DedupePlugin,
 } = optimize;
 
-const prodPlugins = !isProdOrGhPages ? [] : [
-    new DedupePlugin(),
-    new AggressiveMergingPlugin(),
-    new UglifyJsPlugin(uglifyJsPluginConfig(isProdOrGhPages)),
-    new CompressionWebpackPlugin(compressionWebpackPluginConfig),
-    new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
-    new CommonsChunkPlugin(commonsChunkPluginVendorConfig(vendors, '[name].js')),
-];
+const prodPlugins = isProdOrGhPages ? [
+  new DedupePlugin(),
+  new AggressiveMergingPlugin(),
+  new UglifyJsPlugin(uglifyJsPluginConfig(isProdOrGhPages)),
+  new CompressionWebpackPlugin(compressionWebpackPluginConfig),
+  new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
+  new CommonsChunkPlugin(commonsChunkPluginVendorConfig(vendors, '[name].js')),
+] : [];
 
 export default [
   extractCSS,
