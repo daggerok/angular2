@@ -122,28 +122,28 @@
   ],
   "directive-selector-prefix": [
     false,
-    "angular-2"
+    "wp2"
   ],
   "component-selector-prefix": [
     false,
-    "angular-2"
+    "wp2"
   ],
   "directive-selector": [
     true,
     "attribute",
-    "angular-2",
+    "wp2",
     "camelCase"
   ],
   "component-selector": [
     true,
     "element",
-    "angular-2",
+    "wp2",
     "kebab-case"
   ],
   "pipe-naming": [
     true,
     "camelCase",
-    "angular-2"
+    "wp2"
   ],
   "no-input-rename": true,
   "no-output-rename": true,

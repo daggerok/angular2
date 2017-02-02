@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import './home.component.styl';
 
 @Component({
-  selector: 'angular-2-home',
+  selector: 'wp2-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
