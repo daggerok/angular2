@@ -6,29 +6,32 @@
   "scripts": {
     "sleep": "sleep 3",
     "clean": "rimraf -rf ./dist",
-    "prebuild": "npm run clean",
 
     "json-server": "babel-node ./node_modules/.bin/json-server --watch -r ./config/json-server/routes.json -c ./config/json-server/config.json ./config/json-server/testdata.js",
     "start-server": "browser-sync start -c ./config/bs-config.js",
     "server": "npm run start-server -- --no-notify --no-open --no-online --no-inject-changes --no-reload-on-restart",
     "serve": "npm-run-all build start-server",
 
-    "lint": "tslint --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals -t verbose -c ./config/tslint.json 'src/**/*.ts'",
+    "prebuild": "npm run clean",
+    "build": "cross-env NODE_ENV=production npm run compile",
+
+    "preghpages": "npm run clean",
+    "ghpages": "cross-env NODE_ENV=ghpages npm run compile",
+
+    "compile": "webpack --config=./config/webpack.config.babel.js",
 
     "open": "open-url localhost:8000",
     "open-url": "npm-run-all sleep open",
     "start": "npm-run-all -p webpack-dev-server open-url",
-
-    "compile": "webpack --config=./config/webpack.config.babel.js",
-    "build": "cross-env NODE_ENV=production npm run compile",
-    "gh-pages": "cross-env NODE_ENV=ghpages npm run compile",
     "webpack": "cross-env NODE_ENV=development npm run compile",
     "webpack-dev-server": "cross-env NODE_ENV=development webpack-dev-server -w -d --config=./config/webpack.config.babel.js",
 
     "stop": "kill -9 $(ps waux | grep browser-sync | grep -v grep | awk '{print $2}') | true",
 
+    "lint": "tslint --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals -t verbose -c ./config/tslint.json 'src/**/*.ts'",
+
     "pretest": "npm run webpack",
-    "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'E2E,HTTP' -c 'green,magenta'",
+    "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'E2E,HTTP' -c 'green,cyan' # colors: black, red, green, yellow, blue, magenta, cyan, white, gray",
     "protractor": "protractor ./config/protractor.js",
     "preprotractor": "npm-run-all sleep webdriver-manager-update",
     "webdriver-manager-update": "webdriver-manager update",
