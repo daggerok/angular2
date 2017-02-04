@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import ExtractPlugin from 'extract-text-webpack-plugin';
+import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import { isProdOrGhPages } from './env.babel';
 
 const exclude = /\/node_modules\//;
@@ -8,7 +8,7 @@ const pathTo = (rel) => resolve(process.cwd(), rel);
 const resources = pathTo('./src/assets');
 const include = pathTo('./src');
 
-export const extractCSS = new ExtractPlugin('[name].css', { allChunks: true });
+export const extractCSS = new ExtractTextWebpackPlugin('[name].css', { allChunks: true });
 
 export default {
   preLoaders: [

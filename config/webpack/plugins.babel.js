@@ -11,12 +11,12 @@ import CompressionWebpackPlugin from 'compression-webpack-plugin';
 import { vendors } from './entry.babel';
 import { extractCSS } from './module.babel';
 import { isProdOrGhPages } from './env.babel';
-import commonsChunkPluginVendorConfig from './plugin/commons-chunk-plugin/vendors.config.babel';
-import compressionWebpackPluginConfig from './plugin/compression-webpack-plugin.config.babel';
-import definePluginConfig from './plugin/define-plugin.config.babel';
-import htmlWebpackPluginConfig from './plugin/html-webpack-plugin.config.babel';
-import providePluginConfig from './plugin/provide-plugin.config.babel';
-import uglifyJsPluginConfig from './plugin/uglify-js-plugin.config.babel';
+import commonsChunkPluginConfig from './plugins/commons-chunk-plugin.babel';
+import compressionWebpackPluginConfig from './plugins/compression-webpack-plugin.config.babel';
+import definePluginConfig from './plugins/define-plugin.config.babel';
+import htmlWebpackPluginConfig from './plugins/html-webpack-plugin.config.babel';
+import providePluginConfig from './plugins/provide-plugin.config.babel';
+import uglifyJsPluginConfig from './plugins/uglify-js-plugin.config.babel';
 
 const {
   AggressiveMergingPlugin,
@@ -32,13 +32,13 @@ const prodPlugins = isProdOrGhPages ? [
   new UglifyJsPlugin(uglifyJsPluginConfig(isProdOrGhPages)),
   new CompressionWebpackPlugin(compressionWebpackPluginConfig),
   new ScriptExtHtmlWebpackPlugin({ defaultAttribute: 'defer' }),
-  new CommonsChunkPlugin(commonsChunkPluginVendorConfig(vendors, '[name].js')),
+  new CommonsChunkPlugin(commonsChunkPluginConfig(vendors)),
 ] : [];
 
 export default [
   extractCSS,
   new OccurenceOrderPlugin(true),
-  new ProvidePlugin(providePluginConfig()),
+  new ProvidePlugin(providePluginConfig),
   isProdOrGhPages ? undefined : new NoErrorsPlugin(),
   new DefinePlugin(definePluginConfig(isProdOrGhPages)),
   new HtmlWebpackPlugin(htmlWebpackPluginConfig(isProdOrGhPages)),

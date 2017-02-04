@@ -18,7 +18,7 @@ import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone.js';
 
-if ('development' === process.env.NODE_ENV) {
+if (process && process.env && process.env.DEVELOPMENT) {
   Error['stackTraceLimit'] = Infinity;
   require('zone.js/dist/long-stack-trace-zone');
 }
