@@ -1,12 +1,12 @@
-export default isProdOrGhPages => ({
+export default env => ({
   chunksSortMode: 'none',
   filename: 'index.html',
   favicon: './src/assets/favicon.ico',
   template: './src/assets/index.html',
-  minify: !isProdOrGhPages ? false : {
+  minify: env !== 'development' ? {
       collapseWhitespace: true,
       removeComments: true,
       minifyCSS: true,
       minifyJS: true,
-    },
+    } : false,
 });

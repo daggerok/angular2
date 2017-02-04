@@ -27,8 +27,12 @@ before_script:
   - npm i
   - npm update
 script:
-  - npm run lint
   - npm t
+  - npm run lint
   - npm run build
+  - npm run compile
+  - npm run webpack
   - cat npm-debug.log | true
+after_script:
+  - npm outdated
 cache.directories: node_modules/
