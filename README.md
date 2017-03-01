@@ -1,5 +1,12 @@
 # angular2-webpack2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=webpack2)](https://travis-ci.org/daggerok/angular2)
 
+update npm versions
+
+```bash
+npm i -g npm-check-updates
+ncu -u
+```
+
 bundle angular 2 application using webpack2
 
 ```bash

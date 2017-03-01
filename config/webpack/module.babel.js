@@ -27,6 +27,11 @@ export default env => ({
       enforce: 'pre',
       test: /\.ts$/i,
       loader: 'tslint-loader'
+    },    {
+      include,
+      enforce: 'pre',
+      test: /\.ts$/i,
+      loader: 'source-map-loader'
     },
     {
       test: /\.ts$/i,
