@@ -1,16 +1,6 @@
 #!/usr/bin/fish
 
-## before script do next:
-# cd /tmp
-# mkdir clean-dir; cd clean-dir/
-# git remote add origin git@github.com:daggerok/angular2.git
-# git checkout -b gh-pages
-# echo "# github pages branch" > README.md
-# git add README.md
-# git commit -am init
-# git push origin gh-pages
-
-npm i; npm run gh-pages
+npm i; npm run ghpages
 sed -i -e "s/\(<base href=\"\/\">\)/<base href=\"\/angular2\/\"\/>/g" dist/index.html
 sed -i -e 's/^\/dist$/#\/dist/g' .gitignore
 touch dist/.nojekyll
@@ -24,4 +14,4 @@ git rm -r dist --cached
 sed -i -e 's/^#\/dist$/\/dist/g' .gitignore
 git add .
 git commit --amend --no-edit
-git push origin bootswatch --force
+git push origin bootswatch-webpack2 --force

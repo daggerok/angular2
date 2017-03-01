@@ -1,11 +1,17 @@
-import { isGhPages } from './env.babel';
-
-export const publicPath = isGhPages ? '/angular2/' : '/';
-export const staticDir = './dist';
-
-export default {
+import {
+  pathTo,
   publicPath,
-  path: staticDir,
-  filename: '[name].js',
-  sourceMapFilename: '[file].map',
-};
+} from './utils.babel';
+import { version } from '../../package.json';
+
+export const suffix = `v=${version}`;
+const staticDir = './dist';
+
+export default env => ({
+  publicPath: publicPath(env),
+  path: pathTo(staticDir),
+  filename: `[name].js?${suffix}`,
+  sourceMapFilename: `[file].map?${suffix}`,
+  chunkFilename: `[id].chunk.js?${suffix}`,
+  jsonpFunction: 'w',
+});

@@ -1,82 +1,112 @@
-import { resolve } from 'path';
-import ExtractPlugin from 'extract-text-webpack-plugin';
-import { isProdOrGhPages } from './env.babel';
+import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
+import {
+  pathTo,
+  minimize,
+  publicPath,
+} from './utils.babel';
 
-const exclude = /\/node_modules\//;
-const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/i;
-const pathTo = (rel) => resolve(process.cwd(), rel);
-const resources = pathTo('./src/assets');
 const include = pathTo('./src');
+const resources = pathTo('./src/assets');
 
-export const extractCSS = new ExtractPlugin('[name].css', { allChunks: true });
+export const exclude = /\/(node_modules|bower_components)\//;
+const assets = /\.(raw|gif|png|jpg|jpeg|otf|eot|woff|woff2|ttf|svg|ico)$/i;
 
-export default {
-  preLoaders: [
-    isProdOrGhPages ? undefined : {
+const cssLoader = env => ExtractTextWebpackPlugin.extract({
+  fallback: 'style-loader',
+  publicPath: publicPath(env),
+  use: `css-loader?importLoader=1${minimize(env)}!postcss-loader?sourceMap=inline`,
+});
+
+const stylusLoader = env => ExtractTextWebpackPlugin.extract({
+  fallback: 'style-loader',
+  publicPath: publicPath(env),
+  use: `css-loader?importLoader=2${minimize(env)}!postcss-loader?sourceMap=inline!stylus-loader`,
+});
+
+export default env => ({
+  rules: [
+    {
       include,
+      enforce: 'pre',
       test: /\.ts$/i,
-      loader: 'tslint-loader',
+      loader: 'tslint-loader'
     },
     {
       include,
-      test: /\.js$/i,
-      loader: 'source-map-loader',
+      enforce: 'pre',
+      test: /\.ts$/i,
+      loader: 'source-map-loader'
     },
-  ].filter(preLoader => !!preLoader),
-  loaders: [
     {
       test: /\.ts$/i,
-      loaders: [
+      loaders: env !== 'development' ? [
+        '@ngtools/webpack',
+      ] : [
         'awesome-typescript-loader',
         'angular2-template-loader',
         'angular2-router-loader',
       ],
     },
+    // {
+    //   test: /\.ts$/i,
+    //   loaders: [
+    //     'awesome-typescript-loader',
+    //     'angular2-template-loader',
+    //     'angular2-router-loader',
+    //   ],
+    // },
     {
       include,
       test: /\.js$/i,
       loader: 'babel-loader',
-      query: {
+      options: {
         presets: [
+          // [ 'es2015', { modules: 'commonjs' } ], // can be false or amd, umd, systemjs, commonjs
+          [ 'es2015', { modules: false, }, ], // can be false or amd, umd, systemjs, commonjs
           'stage-0',
-          'es2015',
         ],
         plugins: [
           'add-module-exports',
-        ]
+          'syntax-dynamic-import',
+          'transform-class-properties',
+        ],
       }
     },
     {
       include,
-      loader: 'raw-loader',
       test: /\.html$/i,
+      loader: 'raw-loader',
     },
     {
       test: /\.css$/i,
-      include: [
-        pathTo('./node_modules/bootswatch'),
-        pathTo('./node_modules/bootstrap'),
-        include,
-      ],
-      loader: extractCSS.extract('style-loader', `css-loader?importLoader=1${isProdOrGhPages ? '' : '&sourceMap'}`, 'postcss-loader'),
+      use: cssLoader(env),
     },
     {
-      include,
       test: /\.styl$/i,
-      loader: extractCSS.extract('style-loader', `css-loader?importLoader=1!postcss-loader!stylus-loader${isProdOrGhPages ? '' : '?sourceMap'}`),
+      include: [
+        include,
+        pathTo('./node_modules/angular/'),
+        pathTo('./node_modules/bootstrap/'),
+        pathTo('./node_modules/bootswatch/'),
+        pathTo('./node_modules/normalize.css/'),
+      ],
+      use: stylusLoader(env),
     },
     {
+      test: assets,
       include: exclude,
       loader: 'file-loader?name=vendors/[1]&regExp=node_modules/(.*)',
-      test: assets,
     },
     {
+      test: assets,
       include: resources,
       loader: 'file-loader?name=resources/[1]&regExp=src/assets/(.*)',
-      test: assets,
     },
     {
-      exclude: [exclude, resources],
+      exclude: [
+        exclude,
+        resources,
+      ],
       loader: 'file-loader?name=[path]/[name].[ext]',
       test: assets,
     },
@@ -85,4 +115,4 @@ export default {
     /.+zone\.js\/dist\/.+/,
     /.+angular2\/bundles\/.+/,
   ]
-};
+});

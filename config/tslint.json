@@ -122,28 +122,28 @@
   ],
   "directive-selector-prefix": [
     false,
-    "bw"
+    "wp2"
   ],
   "component-selector-prefix": [
     false,
-    "bw"
+    "wp2"
   ],
   "directive-selector": [
     true,
     "attribute",
-    "bw",
+    "wp2",
     "camelCase"
   ],
   "component-selector": [
     true,
     "element",
-    "bw",
+    "wp2",
     "kebab-case"
   ],
   "pipe-naming": [
     true,
     "camelCase",
-    "bw"
+    "wp2"
   ],
   "no-input-rename": true,
   "no-output-rename": true,

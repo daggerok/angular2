@@ -16,3 +16,10 @@ but angular-cli for code generation
 cd src/app
 ng g c my-component
 ```
+
+update npm versions
+
+```bash
+npm i -g npm-check-updates
+ncu -u
+```
