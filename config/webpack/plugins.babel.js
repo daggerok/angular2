@@ -11,8 +11,6 @@ import {
   DefinePlugin,
   optimize,
 } from 'webpack';
-import { AotPlugin } from '@ngtools/webpack';
-import aotPluginConfig from './plugins/aot-plugin.config.babel';
 import { BaseHrefWebpackPlugin } from 'base-href-webpack-plugin';
 import baseHrefWebpackPluginConfig from './plugins/base-href-webpack-plugin.config.babel';
 import uglifyJsPluginConfig from './plugins/uglify-js-plugin';
@@ -47,7 +45,6 @@ export default env => [
   new BaseHrefWebpackPlugin(baseHrefWebpackPluginConfig(env)),
   new ExtractTextWebpackPlugin(extractTextWebpackPluginConfig(env)),
   env === 'development' ? new NoEmitOnErrorsPlugin() : undefined,
-  env !== 'development' ? new AotPlugin(aotPluginConfig) : undefined,
   env !== 'development' ? new AggressiveMergingPlugin() : undefined,
   env !== 'development' ? new UglifyJsPlugin(uglifyJsPluginConfig) : undefined,
   env !== 'development' ? new CompressionWebpackPlugin(compressionWebpackPluginConfig) : undefined,

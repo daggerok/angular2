@@ -14,5 +14,5 @@ export default env => env === 'development' ? {
       target: "http://localhost:8080",
       secure: true,
     },
-  }
+  },
 } : {};
