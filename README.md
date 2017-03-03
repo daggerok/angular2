@@ -1,4 +1,4 @@
-# angular2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=master)](https://travis-ci.org/daggerok/angular2)
+# angular2-webpack1 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=webpack1)](https://travis-ci.org/daggerok/angular2)
 
 ```bash
 npm i
