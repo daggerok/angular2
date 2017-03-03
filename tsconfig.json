@@ -16,7 +16,10 @@
     "suppressExcessPropertyErrors": true,
     "suppressImplicitAnyIndexErrors": true,
     "noEmit": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "compileOnSave": false,
   "buildOnSave": false,
@@ -26,6 +29,9 @@
   "exclude": [
     "./node_modules/*",
     "**/*.spec.ts",
-    "**/*-aot.ts"
-  ]
+    "**/*-aot.ts",
+    "**/*test.ts",
+    "**/*.spec.ts"
+  ],
+  "angularCompilerOptions": { "genDir": "i18n" }
 }
