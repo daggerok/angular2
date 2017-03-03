@@ -1,5 +1,4 @@
 export default env => ({
-  // chunksSortMode: 'none',
   chunks: [
     'vendors',
     'app',

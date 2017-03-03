@@ -29,13 +29,13 @@ export default env => ({
       include,
       enforce: 'pre',
       test: /\.ts$/i,
-      loader: 'tslint-loader'
+      loader: 'tslint-loader',
     },
     {
       include,
       enforce: 'pre',
       test: /\.ts$/i,
-      loader: 'source-map-loader'
+      loader: 'source-map-loader',
     },
     {
       test: /\.ts$/i,
@@ -47,21 +47,12 @@ export default env => ({
         'angular2-router-loader',
       ],
     },
-    // {
-    //   test: /\.ts$/i,
-    //   loaders: [
-    //     'awesome-typescript-loader',
-    //     'angular2-template-loader',
-    //     'angular2-router-loader',
-    //   ],
-    // },
     {
       include,
       test: /\.js$/i,
       loader: 'babel-loader',
       options: {
         presets: [
-          // [ 'es2015', { modules: 'commonjs' } ], // can be false or amd, umd, systemjs, commonjs
           [ 'es2015', { modules: false, }, ], // can be false or amd, umd, systemjs, commonjs
           'stage-0',
         ],
@@ -114,5 +105,5 @@ export default env => ({
   noParse: [
     /.+zone\.js\/dist\/.+/,
     /.+angular2\/bundles\/.+/,
-  ]
+  ],
 });

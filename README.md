@@ -1,4 +1,4 @@
-# angular2-webpack2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=webpack2)](https://travis-ci.org/daggerok/angular2)
+# angular2-webpack2-aot [![build](https://travis-ci.org/daggerok/angular2.svg?branch=aot)](https://travis-ci.org/daggerok/angular2)
 
 update npm versions
 

@@ -1,3 +1,3 @@
 export default {
-  defaultAttribute: 'defer'
+  defaultAttribute: 'defer',
 };
