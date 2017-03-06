@@ -40,9 +40,17 @@ export default env => [
   new ProgressBarWebpackPlugin(),
   new ProvidePlugin(providePluginConfig),
   new DefinePlugin(definePluginConfig(env)),
-  new CommonsChunkPlugin({ name: 'commons' }),
-  new CommonsChunkPlugin({ name: 'polyfills', chunks: ['polyfills', 'vendors',], }),
-  new CommonsChunkPlugin({ name: 'vendors', chunks: ['vendors', 'app',], }),
+  // see: https://github.com/webpack/webpack/blob/master/examples/common-chunk-and-vendor-chunk/webpack.config.js
+  new CommonsChunkPlugin({
+    // order does matters!
+    // 'not existing commons output filename',
+    // 'existing vendors entry name':
+    names: [
+      'commons',
+      'vendors',
+    ],
+    // size of previous (names) array:
+    minChunks: 2 }),
   new HtmlWebpackPlugin(htmlWebpackPluginConfig(env)),
   new LoaderOptionsPlugin(loaderOptionsPluginConfig(env)),
   new BaseHrefWebpackPlugin(baseHrefWebpackPluginConfig(env)),

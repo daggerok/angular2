@@ -1,5 +1,9 @@
 export default {
-  polyfills: './src/polyfills.ts',
-  vendors: './src/vendors.ts',
+  vendors: [
+    './src/polyfills.ts',
+    './src/vendors.ts',
+  ],
   app: './src/main.ts',
+  // if you will add more (app-like) pages,
+  // then commons bundle file will appears.
 };
