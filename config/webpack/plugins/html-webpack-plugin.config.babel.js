@@ -1,5 +1,7 @@
 export default env => ({
   chunks: [
+    'commons',
+    'polyfills',
     'vendors',
     'app',
   ],
