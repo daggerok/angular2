@@ -8,8 +8,8 @@ export const suffix = `v=${version}`;
 const staticDir = './dist';
 
 export default env => ({
-  publicPath: publicPath(env),
   path: pathTo(staticDir),
+  publicPath: publicPath(env),
   filename: `[name].js?${suffix}`,
   sourceMapFilename: `[file].map?${suffix}`,
   chunkFilename: `[id].chunk.js?${suffix}`,

@@ -1,8 +1,10 @@
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import ExtractTextWebpackPlugin from 'extract-text-webpack-plugin';
 import CompressionWebpackPlugin from 'compression-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ProgressBarWebpackPlugin from 'progress-bar-webpack-plugin';
+import { BaseHrefWebpackPlugin } from 'base-href-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { AotPlugin } from '@ngtools/webpack';
 import {
   ContextReplacementPlugin,
   NoEmitOnErrorsPlugin,
@@ -11,26 +13,24 @@ import {
   DefinePlugin,
   optimize,
 } from 'webpack';
-import { AotPlugin } from '@ngtools/webpack';
+const {
+  AggressiveMergingPlugin,
+  CommonsChunkPlugin,
+  UglifyJsPlugin,
+} = optimize;
+
 import aotPluginConfig from './plugins/aot-plugin.config.babel';
-import { BaseHrefWebpackPlugin } from 'base-href-webpack-plugin';
 import baseHrefWebpackPluginConfig from './plugins/base-href-webpack-plugin.config.babel';
 import uglifyJsPluginConfig from './plugins/uglify-js-plugin';
 import compressionWebpackPluginConfig from './plugins/compression-webpack-plugin.config.babel';
-import commonsChunkPluginConfig from './plugins/commons-chunk-plugin.config.babel';
 import scriptExtHtmlWebpackPluginConfig from './plugins/script-ext-html-webpack-plugin.config.babel';
 import extractTextWebpackPluginConfig from './plugins/extract-text-webpack-plugin.config.babel';
 import providePluginConfig from './plugins/provide-plugin.config.babel';
 import definePluginConfig from './plugins/define-plugin.config.babel';
 import htmlWebpackPluginConfig from './plugins/html-webpack-plugin.config.babel';
 import loaderOptionsPluginConfig from './plugins/loader-options-plugin.config.babel';
-import { pathTo } from './utils.babel';
 
-const {
-  AggressiveMergingPlugin,
-  CommonsChunkPlugin,
-  UglifyJsPlugin,
-} = optimize;
+import { pathTo } from './utils.babel';
 
 export default env => [
   // Fixes Angular 2 error ?
@@ -41,7 +41,9 @@ export default env => [
   new ProgressBarWebpackPlugin(),
   new ProvidePlugin(providePluginConfig),
   new DefinePlugin(definePluginConfig(env)),
-  new CommonsChunkPlugin(commonsChunkPluginConfig),
+  new CommonsChunkPlugin({ name: 'commons' }),
+  new CommonsChunkPlugin({ name: 'polyfills', chunks: ['polyfills', 'vendors',], }),
+  new CommonsChunkPlugin({ name: 'vendors', chunks: ['vendors', 'app',], }),
   new HtmlWebpackPlugin(htmlWebpackPluginConfig(env)),
   new LoaderOptionsPlugin(loaderOptionsPluginConfig(env)),
   new BaseHrefWebpackPlugin(baseHrefWebpackPluginConfig(env)),
