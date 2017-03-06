@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <base href="/">
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>angular2</title>
+  <title>primeng</title>
 </head>
-<body class="container-fluid">
+<body>
 <app>
   <style type="text/css">
+
     /* position: center of the page */
     .centered {
       position: fixed;
@@ -36,6 +36,7 @@
       -webkit-animation: spin .7s infinite linear;
     }
 
+    /* animation */
     @-moz-keyframes spin {
       0% {
         -moz-transform: rotate(0deg);
@@ -44,7 +45,6 @@
         -moz-transform: rotate(360deg);
       }
     }
-
     @-moz-keyframes spinoff {
       0% {
         -moz-transform: rotate(0deg);
@@ -53,7 +53,6 @@
         -moz-transform: rotate(-360deg);
       }
     }
-
     @-webkit-keyframes spin {
       0% {
         -webkit-transform: rotate(0deg);
@@ -62,7 +61,6 @@
         -webkit-transform: rotate(360deg);
       }
     }
-
     @-webkit-keyframes spinoff {
       0% {
         -webkit-transform: rotate(0deg);
@@ -73,12 +71,8 @@
     }
   </style>
 
-  <div class="container centered">
-    <div class="row vertical-center-row">
-      <div class="text-center col-xs-4 col-xs-offset-4">
-        <div class="ball"></div>
-      </div>
-    </div>
+  <div class="centered">
+    <div class="ball"></div>
   </div>
 </app>
 </body>

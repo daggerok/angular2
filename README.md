@@ -1,4 +1,4 @@
-# angular2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=master)](https://travis-ci.org/daggerok/angular2)
+# primeng [![build](https://travis-ci.org/daggerok/angular2.svg?branch=PrimeNG)](https://travis-ci.org/daggerok/angular2)
 
 update npm versions
 
@@ -15,9 +15,9 @@ npm t
 npm start
 npm run lint
 npm run build
-npm run serve
+npm run compile
 npm run webpack
-npm run api-server:bootRun
+npm run serve
 ```
 
 but angular-cli for code generation

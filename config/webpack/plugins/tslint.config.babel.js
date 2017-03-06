@@ -1,3 +1,4 @@
+import { isProd } from '../utils.babel';
 /**
  * Static analysis linter for TypeScript advanced options configuration
  * Description: An extensible linter for the TypeScript language.
@@ -15,7 +16,7 @@ export default env => ({
   // tslint does not interrupt the compilation by default
   // if you want any file with tslint errors to fail
   // set failOnHint to true
-  failOnHint: env !== 'development',
+  failOnHint: isProd(env),
 
   // can specify a custom config file relative to current directory
   // 'tslint-custom.json'

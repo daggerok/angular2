@@ -1,4 +1,4 @@
-import { pathTo } from '../utils.babel';
+import { pathTo, isProd } from '../utils.babel';
 import babel from './babel.config.babel';
 import postcss from './postcss.config.babel';
 import tslint from './tslint.config.babel';
@@ -10,6 +10,6 @@ export default env => ({
     postcss,
     tslint: tslint(env),
   },
-  minimize: env === 'prod',
-  debug: env !== 'prod',
+  minimize: isProd(env),
+  debug: !isProd(env),
 });

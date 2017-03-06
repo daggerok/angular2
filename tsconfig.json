@@ -29,9 +29,10 @@
   "exclude": [
     "./node_modules/*",
     "**/*.spec.ts",
-    "**/*-aot.ts",
-    "**/*test.ts",
-    "**/*.spec.ts"
+    "**/*.test.ts",
+    "**/*-aot.ts"
   ],
-  "angularCompilerOptions": { "genDir": "i18n" }
+  "angularCompilerOptions": {
+    "genDir": "i18n"
+  }
 }

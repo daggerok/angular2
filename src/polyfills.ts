@@ -11,14 +11,20 @@ import 'core-js/es6/string';
 import 'core-js/es6/date';
 import 'core-js/es6/array';
 import 'core-js/es6/regexp';
-import 'core-js/es6/map';
 import 'core-js/es6/set';
+import 'core-js/es6/map';
+import 'core-js/es6/weak-set';
+import 'core-js/es6/weak-map';
+import 'core-js/es6/typed';
 import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone.js';
 
-if (process && process.env && process.env.DEVELOPMENT) {
+if (process
+    && process.env
+    && process.env.NODE_ENV !== 'production') {
+
   Error['stackTraceLimit'] = Infinity;
   require('zone.js/dist/long-stack-trace-zone');
 }

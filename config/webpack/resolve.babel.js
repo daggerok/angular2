@@ -3,7 +3,7 @@ import { pathTo } from './utils.babel';
 export default {
   modules: [
     pathTo('./src'),
-    'node_modules',
+    pathTo('node_modules'),
   ],
   extensions: [
     '.ts',
