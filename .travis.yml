@@ -1,11 +1,6 @@
 sudo: required
 dist: trusty
-language: java
-jdk: oraclejdk8
 install: true
-env:
-  SPRING_PROFILES_ACTIVE: default
-  DOCKER_COMPOSE_VERSION: 1.9.0
 before_install:
   # node
   - nvm install 7
@@ -20,15 +15,13 @@ before_install:
 before_script:
   - npm i
   - npm update
-  - npm start &
-  - npm run pree2e &
 script:
-  - npm run compile
+  - npm run ghpages
   - npm run build
   - npm run lint
   - npm t
 after_script:
-  - cat npm-debug.log | true
+  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
 cache:
   directories:
     - node_modules/

@@ -11,20 +11,20 @@ interface Todo {
   styleUrls: ['./todo.component.styl'],
 })
 export class TodoComponent implements OnInit {
-  private showDialog: boolean = false;
-  private editingTodo: Todo = null;
-  private fieldValue: string = this.initialFieldValue();
-  private todos: Array<Todo> = [];
-  private okButtonText = this.initialOkButtonText();
+  public showDialog = false;
+  public editingTodo: Todo = null;
+  public fieldValue = this.initialFieldValue();
+  public todos: Array<Todo> = [];
+  public okButtonText = this.initialOkButtonText();
 
   constructor() { }
   public ngOnInit() {}
 
-  private initialFieldValue() {
+  private initialFieldValue(): string {
     return '';
   }
 
-  private initialOkButtonText() {
+  private initialOkButtonText(): string {
     return 'Create task';
   }
 

@@ -1,22 +1,67 @@
 # material2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=material2)](https://travis-ci.org/daggerok/angular2)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli)
+stack:
+- [Angular Material](https://material.angularjs.org/latest/api/)
+- [Angular Material 2](https://material.angular.io/)
+- [Angular 2](https://angular.io/)
+- [Angular CLI](https://github.com/angular/angular-cli)
 
-## Development server
-Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
-## Code scaffolding
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+Scaffold  | Usage
+---       | ---
+Component | `ng g component my-new-component`
+Directive | `ng g directive my-new-directive`
+Pipe      | `ng g pipe my-new-pipe`
+Service   | `ng g service my-new-service`
+Class     | `ng g class my-new-class`
+Interface | `ng g interface my-new-interface`
+Enum      | `ng g enum my-new-enum`
+Module    | `ng g module my-module`
 
-## Build
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```bash
+ng serve
+ng generate component component-name
+ng build
+ng test
+ng e2e
+ng help
+```
 
-## Running end-to-end tests
-Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+`--aot` Build using Ahead of Time compilation.
 
-## Deploying to Github Pages
-Run `fish bin/gh-pages.fish` to deploy to Github Pages.
+`--app (-a)` Specifies app name to use.
 
-## Further help
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`--base-href (-bh)` Base url for the application being built.
+
+`--deploy-url (-d)` URL where files will be deployed.
+
+`--environment (-e)` Defines the build environment.
+
+`--extract-css (-ec)` Extract css from global styles onto css files instead of js ones.
+
+`--force` Overwrite any webpack.config.js and npm scripts already existing.
+
+`--i18n-file` Localization file to use for i18n.
+
+`--i18n-format` Format of the localization file specified with --i18n-file.
+
+`--locale` Locale to use for i18n.
+
+`--output-hashing (-oh)` Define the output filename cache-busting hashing mode. Possible values: none, all, media, bundles
+
+`--output-path (-op)` Path where output will be placed.
+
+`--poll` Enable and define the file watching poll time period (milliseconds) .
+
+`--progress (-pr)` Log progress to the console while building.
+
+`--sourcemap (-sm, --sourcemaps)` Output sourcemaps.
+
+`--target (-t, -dev, -prod)` Defines the build target.
+
+`--vendor-chunk (-vc)` Use a separate bundle containing only vendor libraries.
+
+`--verbose (-v)` Adds more details to output logging.
+
+`--watch (-w)` Run build when files change.

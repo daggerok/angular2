@@ -21,6 +21,7 @@ import { TodoComponent } from './todo/todo.component';
   ],
   imports: [
     MaterialModule,
+    MdIconModule,
     BrowserModule,
     FormsModule,
     HttpModule,
