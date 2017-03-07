@@ -82,7 +82,7 @@
     "angular2-router-loader": "0.3.5",
     "angular2-template-loader": "0.6.2",
     "autoprefixer": "6.7.6",
-    "awesome-typescript-loader": "3.0.8",
+    "awesome-typescript-loader": "3.1.1",
     "babel-cli": "6.23.0",
     "babel-core": "6.23.1",
     "babel-loader": "6.4.0",
