@@ -19,7 +19,7 @@ before_install:
   - sudo dpkg -i google-chrome*.deb
 before_script:
   - npm i
-  - npm u
+  - npm update
   - npm start &
   - npm run pree2e &
 script:
