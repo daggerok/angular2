@@ -1,6 +1,33 @@
-<p>
-  message: {{ message }}
-</p>
-<input type="text"
-       (change)="setMessage($event)"
-       pinputtext="setup youor message">
+<div style="padding: 7px">
+  <button md-button>Basic Button</button>
+  <md-divider>&nbsp;</md-divider>
+  <button md-raised-button>Raised Button</button>
+  <md-divider>&nbsp;</md-divider>
+  <md-slide-toggle style="display: inline-block">Slide Toggle</md-slide-toggle>
+</div>
+
+<md-card>
+  <md-card-header>Message: {{ model.message }}</md-card-header>
+  <md-card-content>
+
+    <md-input-container
+      align="end">
+
+      <input mdInput
+             minlength="100"
+             type="text"
+             placeholder="message"
+             (change)="setMessage($event)">
+    </md-input-container>
+
+    <i class="material-icons">face</i>
+
+    <!--<md-input placeholder="message"-->
+              <!--maxlength="100"-->
+              <!--align="end"-->
+              <!--(change)="setMessage($event)">-->
+      <!--<span md-prefix>$&nbsp;</span>-->
+      <!--<span md-suffix>.00</span>-->
+    <!--</md-input>-->
+  </md-card-content>
+</md-card>

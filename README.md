@@ -1,32 +1,67 @@
-# ng4 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=ng4)](https://travis-ci.org/daggerok/angular2)
+# ng4-@angular/material [![build](https://travis-ci.org/daggerok/angular2.svg?branch=ng4-@angular/material)](https://travis-ci.org/daggerok/angular2)
 
 stack:
-- PrimeNG
-- Angular 2
-- Angular CLI
+- [Angular Material](https://material.angularjs.org/latest/api/)
+- [Angular Material 2](https://material.angular.io/)
+- [Angular 2](https://angular.io/)
+- [Angular CLI](https://github.com/angular/angular-cli)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Scaffold  | Usage
+---       | ---
+Component | `ng g component my-new-component`
+Directive | `ng g directive my-new-directive`
+Pipe      | `ng g pipe my-new-pipe`
+Service   | `ng g service my-new-service`
+Class     | `ng g class my-new-class`
+Interface | `ng g interface my-new-interface`
+Enum      | `ng g enum my-new-enum`
+Module    | `ng g module my-module`
 
-## Code scaffolding
+```bash
+ng serve
+ng generate component component-name
+ng build
+ng test
+ng e2e
+ng help
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+`--aot` Build using Ahead of Time compilation.
 
-## Build
+`--app (-a)` Specifies app name to use.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+`--base-href (-bh)` Base url for the application being built.
 
-## Running unit tests
+`--deploy-url (-d)` URL where files will be deployed.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`--environment (-e)` Defines the build environment.
 
-## Running end-to-end tests
+`--extract-css (-ec)` Extract css from global styles onto css files instead of js ones.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+`--force` Overwrite any webpack.config.js and npm scripts already existing.
 
-## Further help
+`--i18n-file` Localization file to use for i18n.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`--i18n-format` Format of the localization file specified with --i18n-file.
+
+`--locale` Locale to use for i18n.
+
+`--output-hashing (-oh)` Define the output filename cache-busting hashing mode. Possible values: none, all, media, bundles
+
+`--output-path (-op)` Path where output will be placed.
+
+`--poll` Enable and define the file watching poll time period (milliseconds) .
+
+`--progress (-pr)` Log progress to the console while building.
+
+`--sourcemap (-sm, --sourcemaps)` Output sourcemaps.
+
+`--target (-t, -dev, -prod)` Defines the build target.
+
+`--vendor-chunk (-vc)` Use a separate bundle containing only vendor libraries.
+
+`--verbose (-v)` Adds more details to output logging.
+
+`--watch (-w)` Run build when files change.

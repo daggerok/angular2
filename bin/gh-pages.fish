@@ -14,4 +14,4 @@ git rm -r dist --cached
 sed -i -e 's/^#\/dist$/\/dist/g' .gitignore
 git add .
 git commit --amend --no-edit
-git push origin ng4 --force
+git push origin ng4-@angular/material --force

@@ -16,12 +16,12 @@ before_script:
   - npm i
   - npm update
 script:
+  - npm run ghpages
   - npm run build
   - npm run lint
   - npm t
-  - npm run e2e
 after_script:
-  - cat npm-debug.log | true
+  - if [ -f npm-debug.log ]; then cat npm-debug.log; fi
 cache:
   directories:
     - node_modules/
