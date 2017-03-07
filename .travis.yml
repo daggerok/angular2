@@ -1,0 +1,32 @@
+sudo: required
+dist: trusty
+language: java
+jdk: oraclejdk8
+install: true
+env:
+  SPRING_PROFILES_ACTIVE: default
+  DOCKER_COMPOSE_VERSION: 1.9.0
+before_install:
+  # node
+  - nvm install 7
+  # using google chrome for tests
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sudo apt-get update
+  - sudo apt-get install -y libappindicator1 fonts-liberation
+  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  - sudo dpkg -i google-chrome*.deb
+before_script:
+  - npm i
+  - npm u
+script:
+  - npm run build
+  - npm run lint
+  - npm t
+  - npm run e2e
+after_script:
+  - cat npm-debug.log | true
+cache:
+  directories:
+    - node_modules/
