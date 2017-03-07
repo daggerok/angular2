@@ -4,6 +4,7 @@ import {
   minimize,
   publicPath,
 } from './utils.babel';
+import { suffix } from './output.babel';
 
 const include = pathTo('./src');
 const resources = pathTo('./src/assets');
@@ -86,19 +87,19 @@ export default env => ({
     {
       test: assets,
       include: exclude,
-      loader: 'file-loader?name=vendors/[1]&regExp=node_modules/(.*)',
+      loader: `file-loader?name=vendors/[1]?${suffix}&regExp=node_modules/(.*)`,
     },
     {
       test: assets,
       include: resources,
-      loader: 'file-loader?name=resources/[1]&regExp=src/assets/(.*)',
+      loader: `file-loader?name=resources/[1]?${suffix}&regExp=src/assets/(.*)`,
     },
     {
       exclude: [
         exclude,
         resources,
       ],
-      loader: 'file-loader?name=[path]/[name].[ext]',
+      loader: `file-loader?name=[path]/[name].[ext]?${suffix}`,
       test: assets,
     },
   ],
