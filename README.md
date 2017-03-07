@@ -26,3 +26,8 @@ but angular-cli for code generation
 cd src/app
 ng g c my-component
 ```
+
+links:
+- [PrimeNG](http://www.primefaces.org/primeng/#/)
+- [Webpacl 2](https://webpack.js.org/)
+- [Angular 2](https://angular.io/)

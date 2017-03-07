@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   `,
   styles: [`
     .container {
-      padding: 2%;
+      padding-left: 2%;
     }
   `],
 })

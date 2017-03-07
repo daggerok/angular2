@@ -5,6 +5,7 @@ import ProgressBarWebpackPlugin from 'progress-bar-webpack-plugin';
 import { BaseHrefWebpackPlugin } from 'base-href-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { AotPlugin } from '@ngtools/webpack';
+
 import {
   ContextReplacementPlugin,
   NoEmitOnErrorsPlugin,
@@ -13,6 +14,7 @@ import {
   DefinePlugin,
   optimize,
 } from 'webpack';
+
 const {
   AggressiveMergingPlugin,
   CommonsChunkPlugin,

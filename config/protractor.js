@@ -1,4 +1,4 @@
-const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
+const { SpecReporter } = require('jasmine-spec-reporter');
 const timeout = 36000;
 
 exports.config = {
@@ -11,7 +11,7 @@ exports.config = {
   },
   directConnect: true,
   chromeOnly: true,
-  baseUrl: 'http://localhost:8000/',
+  baseUrl: 'http://localhost:3000/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,

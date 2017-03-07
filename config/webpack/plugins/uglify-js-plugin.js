@@ -9,4 +9,5 @@ export default {
     screw_ie8: true,
   },
   comments: false,
+  sourceMap: true,
 };

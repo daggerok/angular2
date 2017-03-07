@@ -4,5 +4,6 @@ export default {
     'app',
     'vendors',
     'polyfills',
+    'manifest',
   ],
 };
