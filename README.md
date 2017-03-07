@@ -1,9 +1,26 @@
-# ng4 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=ng4)](https://travis-ci.org/daggerok/angular2)
+# ng4wp2 [![build](https://travis-ci.org/daggerok/angular2.svg?branch=ng4wp2)](https://travis-ci.org/daggerok/angular2)
 
 stack:
 - PrimeNG
 - Angular 2
-- Angular CLI
+- Webpack 2
+
+```bash
+ng eject --aot
+==========================================================================================
+Ejection was successful.
+
+To run your builds, you now need to do the following commands:
+   - "npm run build" to build.
+   - "npm run test" to run unit tests.
+   - "npm start" to serve the app using webpack-dev-server.
+   - "npm run e2e" to run protractor.
+
+Running the equivalent CLI commands will result in an error.
+
+==========================================================================================
+Some packages were added. Please run "npm install".
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.1.
 
