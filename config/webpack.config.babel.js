@@ -6,6 +6,7 @@ import plugins from './webpack/plugins.babel';
 import devServer from './webpack/webpack-dev-server.babel';
 import watchOptions from './webpack/watch-options.babel';
 import node from './webpack/node.babel';
+import { isProd } from './webpack/utils.babel';
 
 export default env => ({
   entry,
@@ -13,7 +14,7 @@ export default env => ({
   module: module(env),
   resolve,
   plugins: plugins(env),
-  devtool: env === 'development' ? 'eval' : 'source-map',
+  devtool: isProd(env) ? 'cheap-module-source-map' : 'inline',
   devServer: devServer(env),
   watchOptions,
   profile: 'web',

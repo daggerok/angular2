@@ -8,10 +8,10 @@ export const suffix = `v=${version}`;
 const staticDir = './dist';
 
 export default env => ({
+  jsonpFunction: 'w',
   path: pathTo(staticDir),
   publicPath: publicPath(env),
   filename: `[name].js?${suffix}`,
   sourceMapFilename: `[file].map?${suffix}`,
   chunkFilename: `[id].chunk.js?${suffix}`,
-  jsonpFunction: 'w',
 });
