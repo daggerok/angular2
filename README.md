@@ -4,7 +4,8 @@ update npm versions
 
 ```bash
 npm i -g npm-check-updates
-ncu -u
+# currently we dont want update to latest broken package...
+ncu -u -x @types/core-js @types/node
 ```
 
 bundle angular 2 application using webpack2
