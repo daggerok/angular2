@@ -122,28 +122,28 @@
   ],
   "directive-selector-prefix": [
     false,
-    "wp2"
+    "app"
   ],
   "component-selector-prefix": [
     false,
-    "wp2"
+    "app"
   ],
   "directive-selector": [
     true,
     "attribute",
-    "wp2",
+    "app",
     "camelCase"
   ],
   "component-selector": [
     true,
     "element",
-    "wp2",
+    "app",
     "kebab-case"
   ],
   "pipe-naming": [
     true,
     "camelCase",
-    "wp2"
+    "app"
   ],
   "no-input-rename": true,
   "no-output-rename": true,

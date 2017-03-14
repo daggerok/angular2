@@ -19,7 +19,9 @@
     "inlineSources": true,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "rootDir": "./src",
+    "outDir": "./dist"
   },
   "compileOnSave": false,
   "buildOnSave": false,
@@ -33,5 +35,7 @@
     "**/*test.ts",
     "**/*.spec.ts"
   ],
-  "angularCompilerOptions": { "genDir": "i18n" }
+  "angularCompilerOptions": {
+    "genDir": "./app/gen"
+  }
 }

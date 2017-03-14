@@ -1,6 +1,6 @@
 import { Angular2Page } from './app.po';
 
-describe('app wp2-home h3', () => {
+describe('app-first h3', () => {
   let page: Angular2Page;
 
   beforeEach(() => {

@@ -7,11 +7,9 @@
       "es2015",
       "dom"
     ],
-    "mapRoot": "./",
     "module": "es2015",
     "moduleResolution": "node",
     "outDir": "../dist/out-tsc",
-    "sourceMap": true,
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
@@ -19,7 +17,8 @@
     "noImplicitAny": true,
     "removeComments": true,
     "noEmit": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "rootDir": "../"
   },
   "include": [
     "./**/*.ts"
@@ -31,6 +30,7 @@
     "**/*.spec.ts"
   ],
   "angularCompilerOptions": {
-    "genDir": "i18n"
+    "entryModule": "./app/app.module#AppModule",
+    "genDir": "./ngfactory"
   }
 }

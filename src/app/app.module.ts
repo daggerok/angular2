@@ -1,11 +1,31 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { AppComponent }  from './app.component';
-import { AppRoutes } from './app.routes';
-import { HomeComponent } from './home/home.component';
+import { AppComponent } from './app.component';
+import { FirstComponent } from './components/first.component';
+import { SecondComponent } from './components/second.component';
+
+function errorHandler(err: any) {
+  console.error(err);
+}
+
+const AppRoutes = RouterModule.forRoot([
+  {
+    path: '',
+    component: FirstComponent,
+  },
+  {
+    path: 'second',
+    component: SecondComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+  },
+], { errorHandler });
 
 @NgModule({
   imports: [
@@ -16,8 +36,11 @@ import { HomeComponent } from './home/home.component';
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
+    FirstComponent,
+    SecondComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+  ],
 })
 export class AppModule {}

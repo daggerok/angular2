@@ -5,7 +5,8 @@ import '@angular/http';
 import '@angular/router';
 import '@angular/forms';
 
-import 'jquery';
+if (process && process.env && !process.env.DEVELOPMENT) {
+  require('@angular/compiler');
+}
 
-import 'bootstrap/dist/js/bootstrap.js';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'normalize.css/normalize.css';

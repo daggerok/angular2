@@ -1,7 +1,5 @@
-// browser-sync generated default config
 const config = require('./common-bs-config.js');
 
-// all requests to /api/** => will redirect on http://localhost:8080/api/**
 const httpProxyMiddleware = require('http-proxy-middleware');
 const proxy = httpProxyMiddleware('/api', {
   target: 'http://localhost:8080',
@@ -9,10 +7,16 @@ const proxy = httpProxyMiddleware('/api', {
   logLevel: 'debug'
 });
 
-// fallback for react-routes
 const historyApiFallback = require('connect-history-api-fallback');
-const staticDir = './dist';
-const publicPath = '/';
+
+const webpackConfig = require('../webpack.config')(null);
+const output = (webpackConfig || { output: {
+  path: './dist',
+  publicPath: '/',
+}, }).output;
+
+const staticDir = output.path;
+const publicPath = output.publicPath;
 
 module.exports = Object.assign({}, config, {
   server: {

@@ -6,6 +6,6 @@ export class Angular2Page {
   }
 
   getAppAngular2HomeH3Text() {
-    return element(by.css('app wp2-home h3')).getText();
+    return element(by.css('app app-first p')).getText();
   }
 }
