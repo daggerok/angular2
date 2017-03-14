@@ -33,5 +33,7 @@
     "**/*test.ts",
     "**/*.spec.ts"
   ],
-  "angularCompilerOptions": { "genDir": "i18n" }
+  "angularCompilerOptions": {
+    "genDir": "dist"
+  }
 }
