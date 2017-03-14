@@ -22,7 +22,7 @@
     "webpack": "npm run compile -- --env development",
     "webpack-dev-server": "webpack-dev-server -w -d --config=./config/webpack.config.js --env development",
 
-    "lint": "tslint --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals -t verbose -c ./config/tslint.json 'src/**/*.ts' -t verbose",
+    "lint": "tslint -t verbose -c ./config/tslint.json 'src/*.ts' 'src/**/*.ts' 'e2e/*.ts' 'e2e/**/*.ts'",
 
     "pretest": "npm run webpack",
     "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'E2E,HTTP' -c 'green,cyan' # colors: black, red, green, yellow, blue, magenta, cyan, white, gray",

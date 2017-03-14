@@ -18,7 +18,7 @@
     "noEmit": true,
     "inlineSources": true,
     "typeRoots": [
-      "./node_modules/@types"
+      "node_modules/@types"
     ]
   },
   "compileOnSave": false,
@@ -27,7 +27,8 @@
     "./src/**/*.ts"
   ],
   "exclude": [
-    "./node_modules/*",
+    "node_modules/@types/core-js/**",
+    "node_modules",
     "**/*.spec.ts",
     "**/*-aot.ts",
     "**/*test.ts",

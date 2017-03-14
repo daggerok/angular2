@@ -31,7 +31,7 @@ const publicPath = env => env === 'ghpages' ? '/angular2/' : '/';
 
 const { version } = require('../package.json');
 const suffix = `?v=${version}`;
-const staticDir = './dist';
+const staticDir = pathTo('./dist');
 
 const babelConfig = {
   presets: [
@@ -108,28 +108,23 @@ module.exports = env => ({
   },
 
   output: {
-    jsonpFunction: 'w',
     path: staticDir,
+    jsonpFunction: 'w',
     publicPath: publicPath(env),
     filename: '[name].js' + suffix,
-    sourceMapFilename: '[file].map' + suffix,
     chunkFilename: '[id].chunk.js' + suffix,
+    sourceMapFilename: '[file].map' + suffix,
   },
 
   module: {
     rules: [
-      {
+
+      isProd(env) ? undefined : {
         enforce: 'pre',
         test: /\.ts$/i,
         include,
-        loader: 'tslint-loader',
+        loader: 'source-map-loader',
       },
-      isProd(env) ? undefined : {
-          enforce: 'pre',
-          test: /\.ts$/i,
-          include,
-          loader: 'source-map-loader',
-        },
 
       {
         test: /\.ts$/i,
@@ -304,19 +299,6 @@ module.exports = env => ({
             },
           }),
         ],
-        tslint: {
-          emitErrors: true,
-          failOnHint: isProd(env),
-          configFile: './config/tslint.json',
-          formattersDirectory: 'node_modules/tslint-loader/formatters/',
-          fileOutput: {
-            dir: './dist/tslint/',
-            ext: 'xml',
-            clean: true,
-            header: '<?xml version="1.0" encoding="utf-8"?><checkstyle version="5.7">\n',
-            footer: '</checkstyle>',
-          },
-        },
       },
       minimize: isProd(env),
       debug: !isProd(env),
@@ -326,7 +308,7 @@ module.exports = env => ({
 
     isProd(env) ? new aotLoader.AotPlugin({
       tsConfig: './src/tsconfig.json',
-      entryModule: `./app/app.module#AppModule`
+      entryModule: './app/app.module#AppModule',
     }) : undefined,
 
     isProd(env) ? new UglifyJsPlugin({
@@ -343,8 +325,8 @@ module.exports = env => ({
     }) : undefined,
 
     isProd(env) ? new CompressionWebpackPlugin({
-      asset: "[path].gz?[query]",
-      algorithm: "gzip", // zlib, zopfli, function(buf, callback)
+      asset: '[path].gz?[query]',
+      algorithm: 'gzip', // zlib, zopfli, function(buf, callback)
     }) : undefined,
 
     isProd(env) ? new ScriptExtHtmlWebpackPlugin({
