@@ -4,7 +4,7 @@ update npm versions
 
 ```bash
 npm i -g npm-check-updates
-ncu -u
+ncu -u -x @types/core-js,@types/node
 ```
 
 bundle angular 2 application using webpack2
