@@ -35,7 +35,7 @@ const staticDir = pathTo('./dist');
 
 const babelConfig = {
   presets: [
-    [ 'es2015', { modules: false, }, ],
+    'env',
     'stage-0',
   ],
   plugins: [

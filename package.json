@@ -5,36 +5,28 @@
   "angular-cli": {},
   "scripts": {
     "sleep": "sleep 3",
-
     "precompile": "rimraf -rf ./dist",
     "compile": "webpack --config=./config/webpack.config.js",
-
     "ghpages": "npm run compile -- --env ghpages",
-
     "serve": "npm-run-all build start-server",
     "build": "npm run compile -- --env production",
     "start-server": "browser-sync start -c ./config/browser-sync/bs-config.js",
     "server": "npm run start-server -- --no-notify --no-open --no-online --no-inject-changes --no-reload-on-restart",
-
     "open": "open-url localhost:8000",
     "open-url": "npm-run-all sleep open",
     "start": "npm-run-all -p webpack-dev-server open-url",
     "webpack": "npm run compile -- --env development",
     "webpack-dev-server": "webpack-dev-server -w -d --config=./config/webpack.config.js --env development",
-
     "lint": "tslint -t verbose -c ./config/tslint.json 'src/*.ts' 'src/**/*.ts' 'e2e/*.ts' 'e2e/**/*.ts'",
-
     "pretest": "npm run webpack",
     "test": "concurrently 'npm run protractor' 'npm run server' --kill-others --success first -p '[{name}]' -n 'E2E,HTTP' -c 'green,cyan' # colors: black, red, green, yellow, blue, magenta, cyan, white, gray",
     "protractor": "protractor ./config/protractor.js",
     "preprotractor": "npm-run-all sleep webdriver-manager-update",
     "webdriver-manager-update": "webdriver-manager update",
-
     "compose": "docker-compose --project-name=react -f ./config/nginx/docker-compose.yml",
     "pre-compose-up": "npm run build",
     "compose-up": "npm run docker-compose -- up -d --remove-orphans",
     "compose-down": "npm run docker-compose -- down --remove-orphans --rmi local -v",
-
     "docker": "npm-run-all build docker:*",
     "docker:rm": "docker rm -f daggerok-angular2-master | true",
     "docker:rmi": "docker rmi -f daggerok/angular2:master | true",
@@ -90,7 +82,7 @@
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-class-properties": "6.23.0",
-    "babel-preset-es2015": "6.24.0",
+    "babel-preset-env": "1.2.2",
     "babel-preset-stage-0": "6.22.0",
     "base-href-webpack-plugin": "1.0.2",
     "browser-sync": "2.18.8",
@@ -136,8 +128,8 @@
   },
   "babel": {
     "presets": [
-      "stage-0",
-      "es2015"
+      "env",
+      "stage-0"
     ],
     "plugins": [
       "add-module-exports",
