@@ -5,37 +5,28 @@
   "angular-cli": {},
   "scripts": {
     "sleep": "sleep 3",
-
     "json-server": "babel-node ./node_modules/.bin/json-server --watch -r ./config/json-server/routes.json -c ./config/json-server/config.json ./config/json-server/testdata.js",
-
     "precompile": "rimraf -rf ./dist",
     "compile": "webpack --display-error-details --config=./config/webpack.config.babel.js",
-
     "ghpages": "npm run compile -- --env ghpages",
     "build": "npm run compile -- --env production",
-
     "serve": "npm-run-all build start-server",
     "start-server": "browser-sync start -c ./config/browser-sync/bs-config.js",
     "server": "npm run start-server -- --no-notify --no-open --no-online --no-inject-changes --no-reload-on-restart",
-
     "start": "npm-run-all -p webpack-dev-server open-url",
     "webpack-dev-server": "webpack-dev-server -w -d --config=./config/webpack.config.babel.js --env development",
     "open-url": "npm-run-all sleep open",
     "open": "open-url localhost:8000",
-
     "lint": "tslint --ignoreBoundClassMethods --noUnusedParameters --noUnusedLocals -t verbose -c ./config/tslint.json 'src/**/*.ts'",
-
     "test": "concurrently --success first 'npm run protractor' 'npm run server' --kill-others -p '[{name}]' -n 'E2E,HTTP' -c 'green,cyan' # colors: black, red, green, yellow, blue, magenta, cyan, white, gray",
     "pretest": "npm run compile -- --env development",
     "protractor": "protractor ./config/protractor.js",
     "preprotractor": "npm-run-all sleep webdriver-manager-update",
     "webdriver-manager-update": "webdriver-manager update",
-
     "compose": "docker-compose --project-name=angular2 -f ./config/nginx/docker-compose.yml",
     "precompose-up": "npm run build",
     "compose-up": "npm run compose -- up -d --remove-orphans",
     "compose-down": "npm run compose -- down --remove-orphans --rmi local -v",
-
     "docker": "npm-run-all build docker:*",
     "docker:rm": "docker rm -f daggerok-angular2-primeng | true",
     "docker:rmi": "docker rmi -f daggerok/angular2:PrimeNG | true",
@@ -45,12 +36,17 @@
     "docker:tag-latest": "docker tag daggerok/angular2:PrimeNG-$(date +%Y-%m-%d-%H) daggerok/angular2:PrimeNG",
     "docker:push-latest": "docker push daggerok/angular2:PrimeNG"
   },
+  "pre-push": [
+    "lint",
+    "test",
+    "build"
+  ],
   "dependencies": {
-    "@angular/common": "2.4.9",
-    "@angular/core": "2.4.9",
-    "@angular/forms": "2.4.9",
-    "@angular/http": "2.4.9",
-    "@angular/platform-browser-dynamic": "2.4.9",
+    "@angular/common": "<4.0.0",
+    "@angular/core": "<4.0.0",
+    "@angular/forms": "<4.0.0",
+    "@angular/http": "<4.0.0",
+    "@angular/platform-browser-dynamic": "<4.0.0",
     "@angular/router": "3.4.9",
     "@types/core-js": "0.9.36",
     "es6-promise": "4.1.0",
@@ -62,20 +58,15 @@
     "primeng": "2.0.3",
     "reflect-metadata": "0.1.10",
     "rxjs": "5.2.0",
-    "zone.js": "0.8.0"
+    "zone.js": "0.8.1"
   },
-  "pre-push": [
-    "lint",
-    "test",
-    "build"
-  ],
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.1",
-    "@angular/compiler": "2.4.9",
-    "@angular/compiler-cli": "2.4.9",
-    "@angular/platform-browser": "2.4.9",
-    "@angular/platform-server": "2.4.9",
-    "@angular/upgrade": "2.4.9",
+    "@angular/cli": "1.0.0-rc.2",
+    "@angular/compiler": "<4.0.0",
+    "@angular/compiler-cli": "<4.0.0",
+    "@angular/platform-browser": "<4.0.0",
+    "@angular/platform-server": "<4.0.0",
+    "@angular/upgrade": "<4.0.0",
     "@ngrx/devtools": "1.4.0",
     "@ngtools/webpack": "1.2.12",
     "@types/chai": "3.4.35",
@@ -85,6 +76,7 @@
     "@types/source-map": "0.5.0",
     "@types/uglify-js": "2.6.28",
     "@types/webpack": "2.2.11",
+    "@ultimate/aot-loader": "0.1.12",
     "angular2-router-loader": "0.3.5",
     "angular2-template-loader": "0.6.2",
     "autoprefixer": "6.7.7",
@@ -95,7 +87,7 @@
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
     "babel-plugin-transform-class-properties": "6.23.0",
-    "babel-preset-es2015": "6.24.0",
+    "babel-preset-env": "1.2.2",
     "babel-preset-stage-0": "6.22.0",
     "babel-register": "6.24.0",
     "browser-sync": "2.18.8",
@@ -147,8 +139,8 @@
   },
   "babel": {
     "presets": [
-      "stage-0",
-      "es2015"
+      "env",
+      "stage-0"
     ],
     "plugins": [
       "add-module-exports",
