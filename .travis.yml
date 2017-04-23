@@ -1,4 +1,4 @@
-sudo: required
+group: edge
 dist: trusty
 language: java
 jdk: oraclejdk8
@@ -8,7 +8,7 @@ node_js:
   - 7
 install: true
 env:
-  DOCKER_COMPOSE_VERSION: 1.9.0
+  DOCKER_COMPOSE_VERSION: 1.12.0
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - export DOCKER_COPOSE_URL=https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m`
