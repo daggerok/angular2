@@ -1,10 +1,10 @@
-sudo: required
+group: edge
 dist: trusty
 language: java
 jdk: oraclejdk8
 install: true
 env:
-  DOCKER_COMPOSE_VERSION: 1.9.0
+  DOCKER_COMPOSE_VERSION: 1.12.0
 before_install:
   # travis-ci chrome
   - export CHROME_BIN=/usr/bin/google-chrome
